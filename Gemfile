@@ -43,6 +43,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop', require: false
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
@@ -61,3 +63,7 @@ gem 'devise'
 gem 'rails-i18n'
 
 gem 'pry-rails'
+
+gem 'font-awesome-rails'
+
+gem 'kaminari'
