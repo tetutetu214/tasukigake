@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_02_092705) do
+ActiveRecord::Schema.define(version: 2020_12_02_094141) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "company_name", null: false
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 2020_12_02_092705) do
     t.index ["company_id"], name: "index_company_details_on_company_id"
   end
 
+  create_table "company_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "industry_type_1", null: false
+    t.integer "industry_type_2", null: false
+    t.integer "industry_type_3", null: false
+    t.bigint "company_detail_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_detail_id"], name: "index_company_types_on_company_detail_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -53,4 +63,5 @@ ActiveRecord::Schema.define(version: 2020_12_02_092705) do
 
   add_foreign_key "companies", "users"
   add_foreign_key "company_details", "companies"
+  add_foreign_key "company_types", "company_details"
 end
