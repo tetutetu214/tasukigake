@@ -64,6 +64,6 @@ gem 'rails-i18n'
 
 gem 'pry-rails'
 
-gem 'font-awesome-rails'
+# gem 'font-awesome-rails'
 
 gem 'kaminari'
