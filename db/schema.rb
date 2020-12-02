@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_02_095138) do
+ActiveRecord::Schema.define(version: 2020_12_02_100223) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "company_name", null: false
@@ -47,6 +47,20 @@ ActiveRecord::Schema.define(version: 2020_12_02_095138) do
     t.index ["company_id"], name: "index_company_details_on_company_id"
   end
 
+  create_table "company_statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "prefecture_id", null: false
+    t.integer "insurance_1"
+    t.integer "insurance_2"
+    t.integer "insurance_3"
+    t.integer "license_id"
+    t.integer "tool_id"
+    t.text "companies_pr"
+    t.bigint "company_correspondence_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_correspondence_id"], name: "index_company_statuses_on_company_correspondence_id"
+  end
+
   create_table "company_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "industry_type_1", null: false
     t.integer "industry_type_2", null: false
@@ -72,5 +86,6 @@ ActiveRecord::Schema.define(version: 2020_12_02_095138) do
   add_foreign_key "companies", "users"
   add_foreign_key "company_correspondences", "company_types"
   add_foreign_key "company_details", "companies"
+  add_foreign_key "company_statuses", "company_correspondences"
   add_foreign_key "company_types", "company_details"
 end
