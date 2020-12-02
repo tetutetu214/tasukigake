@@ -1,20 +1,41 @@
-<div class="container mt-3">
+<div class="container">
     <nav class="navbar navbar-expand-lg navbar-light text-dark bg-dark" id="home">
-      <a class="navbar-brand text-white" href="#">Portfolio</a>
+      
+      <a class="navbar-brand text-white" href="#">Tasukigake</a>
+      
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
+      <% if user_signed_in? %>
           <li class="nav-item active">
-            <a class="nav-link text-white" href="#home">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link text-white" href="#home">仕事を探す<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="#skill">Skill</a>
+            <a class="nav-link text-white" href="#skill">仕事を依頼する</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="#contact">Contact</a>
+            <a class="nav-link text-white" href="#contact">協力会社を探す</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#contact">施工事例を探す</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#contact">お知らせ</a>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_user_session_path, class: "nav-link text-white" ,method: :delete %>
+          </li>
+      <% else %>
+          <li class="nav-item">
+            <%= link_to "ログイン", new_user_session_path, class: "nav-link text-white" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-white" %>
+          </li>
+      <% end %>
         </ul>
       </div>
     </nav>
@@ -24,13 +45,13 @@
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-            <img src="img/main.jpg" class="d-block w-100" alt="...">
+            <img src="assets/main.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="img/main.jpg" class="d-block w-100" alt="...">
+            <img src="assets/main.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="img/main.jpg" class="d-block w-100" alt="...">
+            <img src="assets/main.jpg" class="d-block w-100" alt="...">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
