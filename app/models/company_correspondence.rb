@@ -12,5 +12,4 @@ class CompanyCorrespondence < ApplicationRecord
   with_options numericality: { other_than: 1 } do
     validates :prefecture_id
   end
-
 end

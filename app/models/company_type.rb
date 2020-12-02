@@ -14,5 +14,4 @@ class CompanyType < ApplicationRecord
     validates :industry_type_2
     validates :industry_type_3
   end
-  
 end

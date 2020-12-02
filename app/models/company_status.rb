@@ -13,5 +13,4 @@ class CompanyStatus < ApplicationRecord
     validates :lidense_id
     validates :tool_id
   end
-  
 end
