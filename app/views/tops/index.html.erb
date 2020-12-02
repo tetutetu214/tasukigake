@@ -1,105 +1,117 @@
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light text-dark bg-dark" id="home">
-      
-      <a class="navbar-brand text-white" href="#">Tasukigake</a>
-      
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-      <% if user_signed_in? %>
-          <li class="nav-item active">
-            <a class="nav-link text-white" href="#home">仕事を探す<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#skill">仕事を依頼する</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#contact">協力会社を探す</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#contact">施工事例を探す</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#contact">お知らせ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#contact">プロフィール</a>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログアウト", destroy_user_session_path, class: "nav-link text-white" ,method: :delete %>
-          </li>
-      <% else %>
-          <li class="nav-item">
-            <%= link_to "ログイン", new_user_session_path, class: "nav-link text-white" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-white" %>
-          </li>
-      <% end %>
-        </ul>
-      </div>
-    </nav>
-
+<div class="container-fluid">
+<!--ヘッダー-->
+  <%= render "shared/header" %>
 <!-- スライダー -->
     <header>
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-            <img src="assets/tokyo.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-            <img src="assets/main.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-            <img src="assets/main.jpg" class="d-block w-100" alt="...">
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+        <div id="carouselExampleControls">
+          <div class="carousel-inner">
+              <div class="carousel-item active">
+              <img src="assets/tokyo.jpg" class="d-block w-100" alt="...">
+              </div>
+          </div>
         </div>
     </header>
-   <!-- カード -->
-    <div class="container my-5" id="skill">
-      <h2 class= "py-4 text-dark">Skill</h2>
-      <div class="row row-cols-1 row-cols-md-3">
-        <div class="col mb-4">
-          <div class="card">
-            <img src="img/card.jpg" class="card-img-top px-3 mb-3" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Sample</h5>
-              <p class="card-text">SampleSampleSampleSampleSampleSampleSampleSampleSampleSample</p>
-            </div>
+
+<!-- カード タイトル -->
+    <div class="row-middle-title mt-5">
+      <h3>おすすめの協力会社</h3>
+    </div>
+<!-- カード -->
+    <div class="row-middle mt-2 mb-5">
+      <div class="card-deck">
+        <div class="card">
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
           </div>
         </div>
-        <div class="col mb-4">
-          <div class="card">
-            <img src="img/card.jpg" class="card-img-top px-3 mb-3" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Sample</h5>
-              <p class="card-text">SampleSampleSampleSampleSampleSampleSampleSampleSampleSample</p>
-            </div>
+        <div class="card">
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
           </div>
         </div>
-        <div class="col mb-4">
-          <div class="card">
-            <img src="img/card.jpg" class="card-img-top px-3 mb-3" alt="...">
+        <div class="card">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
             <div class="card-body">
-              <h5 class="card-title">Sample</h5>
-              <p class="card-text">SampleSampleSampleSampleSampleSampleSampleSampleSampleSample</p>
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
         </div>
       </div>
-  </div>
+<!-- カード タイトル --> 
+    <div class="row-middle-title mt-5">
+      <h3>おすすめの仕事</h3>
+    </div>
+<!-- カード -->
+    <div class="row-middle mt-2 mb-5">
+      <div class="card-deck">
+        <div class="card">
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+        <div class="card">
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+        <div class="card">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- カード タイトル -->
+    <div class="row-middle-title mt-5">
+      <h3>仕事を依頼する</h3>
+    
+<!-- カード -->
+    <div class="row-middle mt-2 mb-5">
+      <div class="card-deck">
+        <div class="card">
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+        <div class="card">
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+        <div class="card">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
 
    <!-- 問合せフォーム -->
     <div class="container my-5" id="contact">
@@ -122,10 +134,7 @@
       </form>
     </div>
  
-    <!-- フッター -->
-    <footer class="bg-dark text-center">
-      <div class="container">
-          <p class="my-0 text-white py-3">Portfolio</p>
-      </div>
-    </footer>
+ <!-- フッター -->
+  <%= render "shared/footer" %>
+
 </div>
