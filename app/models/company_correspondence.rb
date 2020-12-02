@@ -1,5 +1,6 @@
 class CompanyCorrespondence < ApplicationRecord
-  belongs_to: company_type
+  belongs_to :company_type
+  has_one :company_status
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture
