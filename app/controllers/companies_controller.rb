@@ -11,7 +11,7 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
     if @company.valid?
       @company.save
-      redirect_to root_path
+      redirect_to  companies_details_path
     else
       render :index
     end 
