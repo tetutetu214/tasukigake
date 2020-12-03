@@ -4,16 +4,18 @@ class CompaniesController < ApplicationController
     @company = Company.new
   end
 
-  def new
-  end
-
   def create
     @company = Company.new(company_params)
+
     if @company.valid?
       @company.save
       redirect_to  companies_details_path
     else
-      render :index
+      session["company.regist_data"] = {company: @company.attributes}
+      session["company.regist_data"][:company] = params[:company]
+      binding.pry
+      @company_detail = @user.build_company_detail
+      render :new_address
     end 
   end
 

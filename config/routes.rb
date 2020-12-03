@@ -4,4 +4,5 @@ Rails.application.routes.draw do
       resources :orders, only: [:index]
         resources :companies, only: [:index,:create]
           resources :companies_details, only: [:index,:create]
+
 end
