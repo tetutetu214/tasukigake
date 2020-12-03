@@ -1,0 +1,75 @@
+<div class="container-fluid">
+  <%= render "shared/header" %>
+
+<!-- インフォメーション記述情報-->
+  <div class="companies-title mt-3">
+    <div calss="row-top">
+      <h1>プロフィールを作成する</h1>
+      <p>本項目を埋めると「協力会社を探す」の一覧にあなたの情報が掲載されます。<br>発注会社から仕事を受けやすくするためにも、情報編集を行ってください。</p>
+    </div>
+<!-- info tab-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">プロフィール</a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="ナビゲーションの切替">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">社名・住所<span class="sr-only">(現位置)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">基本情報</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">業種</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">対応可能エリア</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">会社PR</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+<!-- info form area-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+    </nav>
+<!-- インフォメーション navbar 記述情報-->
+        <div class="row-border">
+          <form>
+            <div class="form-group mt-3 ">
+              <label for="formControlRange">
+                <h3>プロフィール完了度</h3>
+              </label>
+              <input type="range" class="form-control-range" id="formControlRange">
+            </div>
+          </form>
+        </div>
+<!-- インフォメーション 記述情報-->
+        <div class="row-main">
+          <form>
+            <div class="form-group mt-5">
+              <label for="exampleInputEmail1">Eメールアドレス</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Eメールアドレス">
+              <small class="text-muted">あなたのメールは他の誰とも共有しません。</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">パスワード</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="パスワード">
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">記憶する</label>
+            </div>
+            <button type="submit" class="btn btn-primary">送信する</button>
+          </form>
+        </div>
+  </div>
+<!-- フッター -->
+    <%= render "shared/footer" %>
+</div>
