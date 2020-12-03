@@ -6,16 +6,11 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
-
     if @company.valid?
       @company.save
-      redirect_to  companies_details_path
+      redirect_to  root_path
     else
-      session["company.regist_data"] = {company: @company.attributes}
-      session["company.regist_data"][:company] = params[:company]
-      binding.pry
-      @company_detail = @user.build_company_detail
-      render :new_address
+      render :index
     end 
   end
 
