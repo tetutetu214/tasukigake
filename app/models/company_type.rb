@@ -1,7 +1,6 @@
 class CompanyType < ApplicationRecord
   belongs_to :company_detail
   has_one :company_correspondence
-
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :industry_type
 
