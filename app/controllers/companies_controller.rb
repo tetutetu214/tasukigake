@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
-  def index
+  
+  def new
   end
+
 end
