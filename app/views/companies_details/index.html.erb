@@ -57,10 +57,32 @@
      <div class="row-main">
         <%= form_with(model: @company_detail,url: "/companies_details" ,local: true) do |f| %>
         <%= render 'shared/error_messages', model:  f.object %>
+<%# 屋号・会社画像 %>
+        <div class="img-upload mt-5">
+          <div class="weight-bold-text">
+            会社のロゴ画像
+          </div>
+          <div class="click-upload mt-2">
+            <%= f.file_field :image, id:"item-image" %>
+          </div>
+        </div>
+<%# 登録区分 %>
+          <div class="division mt-3">
+            <%= f.label :division, '登録区分', {class: 'form-label'} %>
+          </div>
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-outline-secondary active" style="width:50%">
+              <%= f.radio_button :division, 0, {checked: true} %> 法人
+            </label>
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :division, 1, {} %> 個人事業主
+            </label>
+          </div>
 
-        <div class="form-group mt-5">
-          <%= f.label :company_name, "会社名" %><a>必須</a><br />
-          <%= f.text_field :company_name,class: "form-control", placeholder: "例)STIK株式会社" %>
+
+                <div class="form-group mt-2">
+          <%= f.label :division, "登録区分" %><a>必須</a><br />
+          <%= f.text_field :division,class: "form-control", placeholder: "例)STIK株式会社" %>
         </div>
 
         <div class="form-group mt-2">

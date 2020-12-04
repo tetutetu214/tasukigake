@@ -10,7 +10,7 @@ class CompaniesDetailsController < ApplicationController
     @company_detail = CompanyDetail.new(company_detail_params)
     if @company_detail.valid?
       @company_detail.save
-      redirect_to  root_path
+      redirect_to  companies_details_path
     else
       render :index
     end 
