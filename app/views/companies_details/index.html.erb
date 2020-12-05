@@ -70,7 +70,7 @@
           <div class="division mt-3">
             <%= f.label :division, '登録区分', {class: 'form-label'} %>
           </div>
-          <div class="btn-group col-4" data-toggle="buttons">
+          <div class="btn-group col-6" data-toggle="buttons">
             <label class="btn btn-outline-secondary active" style="width:50%">
               <%= f.radio_button :division, 0, {checked: true} %> 法人
             </label>
@@ -81,27 +81,27 @@
 <%# 代表者 %>
         <div class="form-group mt-2">
             <%= f.label :representative, "代表者名" %><a>必須</a><br />
-            <%= f.text_field :representative,class: "form-control col-4", placeholder: "例)襷太郎 " %>
+            <%= f.text_field :representative,class: "form-control col-6", placeholder: "例)襷太郎 " %>
           </div>
 
         <div class="form-group mt-2">
           <%= f.label :phone_number, "電話番号" %><a>必須</a><br />
-          <%= f.text_field :phone_number,class: "form-control col-4", placeholder: "(例)01234567890",maxlength: "11" %>
+          <%= f.text_field :phone_number,class: "form-control col-6", placeholder: "(例)01234567890",maxlength: "11" %>
          <small class="text-muted">ハイフン無し半角数字11桁</small>
         </div>
 
         <div class="form-group mt-2">
           <%= f.label :url, "ウェブサイト" %><br />
-          <%= f.text_field :url,class: "form-control col-4", placeholder: "(例)https://○○○○○○○○.co.jp" %>
+          <%= f.text_field :url,class: "form-control col-6", placeholder: "(例)https://○○○○○○○○.co.jp" %>
         </div>
 <%# 資本金 %>
         <div class="form-group mt-2">
           <%= f.label :capital, "資本金" %><br />
-          <%= f.text_field :capital,class: "form-control col-4", placeholder: "(例)1000" %>
+          <%= f.text_field :capital,class: "form-control col-6", placeholder: "(例)1000" %>
          <small class="text-muted">半角数字のみ記入</small>
         </div>
 <%# 設立年月日 %>
-      <div class="form-group mt-2">
+      <div class="form-group mt-2 col-6">
         <div class='form-text-wrap form-inline'>
           <label class="form-text">設立年月日</label><a>必須</a><br />
         </div>
@@ -120,45 +120,38 @@
         </div>
       </div>
 <%# 従業員数 %>
-          <div class="division mt-3">
-            <%= f.label :division, '登録区分', {class: 'form-label'} %>
+          <div class="employee mt-3">
+            <%= f.label :employee, '従業員数', {class: 'form-label'} %>
           </div>
-          <div class="btn-group col-4" data-toggle="buttons">
+          <div class="btn-group col-6" data-toggle="buttons">
             <label class="btn btn-outline-secondary active" style="width:50%">
-              <%= f.radio_button :division, 0, {checked: true} %> 1人
+              <%= f.radio_button :employee, 0, {checked: true} %> 1人
             </label>
             <label class="btn btn-outline-secondary" style="width:50%">
-              <%= f.radio_button :division, 1, {} %> 2〜5人
+              <%= f.radio_button :employee, 2, {} %> 2〜5人
             </label>
              <label class="btn btn-outline-secondary" style="width:50%">
-              <%= f.radio_button :division, 1, {} %> 2〜5人
+              <%= f.radio_button :employee, 3, {} %> 6〜10人
             </label>
               <label class="btn btn-outline-secondary" style="width:50%">
-              <%= f.radio_button :division, 1, {} %> 2〜5人
+              <%= f.radio_button :employee, 4, {} %> 11〜30人
+            </label>
+            </label>
+              <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :employee, 5, {} %> 31人以上
             </label>
           </div>
-<!-- インフォメーション 都道府県-->
-        <div class="form-group mt-2">
-          <%= f.label :prefecture_id, "都道府県" %>
-          <a>必須</a><br />
-          <%= f.collection_select(:prefecture_id,Prefecture.all, :id, :name, {}, {class:"select-box form-control", id:"prefecture"}) %>
-        </div>
-
-        <div class="form-group">
-            <label class="form-text">市区町村</label>
-          <%= f.text_field :city, class:"form-control", placeholder:"例）さいたま市さいたま" %>
-        </div>
-
-        <div class="form-group">
-          <div class='form-text-wrap'>
-            <label class="form-text">番地</label>
+<%# 会社紹介 %>
+          <div class="description mt-3">
+            <%= f.label :description, '会社概要', {class: 'form-label'} %>
           </div>
-          <%= f.text_field :address, class:"form-control", placeholder:"例）STIKビル1階"%>
-        </div>
+          <div class="form-group">
+            <%= f.text_area :description, class: "description-form col-6"  %>
+         </div>
 
-        <div class="text-center mb-5">
+         <div class="text-center mb-5 col-6">
           <%= f.submit "記録する" ,class:"btn btn-block send-button tx-tfm" %>
-        </div>
+         </div>
       <% end %>
     </div>  
   </div>
