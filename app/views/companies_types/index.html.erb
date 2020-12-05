@@ -28,100 +28,529 @@
         </div>
 <!-- インフォメーション 記述情報-->
      <div class="row-main">
-        <%= form_with(model: @company_detail,url: "/companies_details" ,local: true) do |f| %>
+        <%= form_with(model: @company_type,url: "/company_types" ,local: true) do |f| %>
         <%= render 'shared/error_messages', model:  f.object %>
-<%# 屋号・会社画像 %>
-        <div class="img-upload mt-5">
-          <div class="weight-bold-text">
-            会社のロゴ画像
-          </div>
-          <div class="click-upload mt-2 ml-3">
-            <%= f.file_field :image, id:"item-image" %>
-          </div>
-        </div>
-<%# 登録区分 %>
-          <div class="division mt-3">
-            <%= f.label :division, '登録区分', {class: 'form-label'} %>
-          </div>
-          <div class="btn-group col-6" data-toggle="buttons">
-            <label class="btn btn-outline-secondary active" style="width:50%">
-              <%= f.radio_button :division, 0, {checked: true} %> 法人
-            </label>
-            <label class="btn btn-outline-secondary" style="width:50%">
-              <%= f.radio_button :division, 1, {} %> 個人事業主
-            </label>
-          </div>
-<%# 代表者 %>
-        <div class="form-group mt-2">
-            <%= f.label :representative, "代表者名" %><a>必須</a><br />
-            <%= f.text_field :representative,class: "form-control col-6", placeholder: "例)襷太郎 " %>
-          </div>
 
-        <div class="form-group mt-2">
-          <%= f.label :phone_number, "電話番号" %><a>必須</a><br />
-          <%= f.text_field :phone_number,class: "form-control col-6", placeholder: "(例)01234567890",maxlength: "11" %>
-         <small class="text-muted">ハイフン無し半角数字11桁</small>
+<!-- List group -->
+      <div class="weight-bold-text mt-5">
+        業種
+      </div>
+<div class="row mt-3">
+  <!-- List group -->
+  <div class="col-4">
+    <div class="list-group" id="list-tab" role="tablist">
+      <a class="list-group-item list-group-item-action active" id="list-doboku-list" data-toggle="list" href="#list-doboku" role="tab" aria-controls="list-doboku">土木</a>
+      <a class="list-group-item list-group-item-action" id="list-kentiku-list" data-toggle="list" href="#list-kentiku" role="tab" aria-controls="list-kentiku">建築</a>
+      <a class="list-group-item list-group-item-action" id="list-setubi-list" data-toggle="list" href="#list-setubi" role="tab" aria-controls="list-setubi">設備</a>
+      <a class="list-group-item list-group-item-action" id="list-denki-list" data-toggle="list" href="#list-denki" role="tab" aria-controls="list-denki">電気・通信</a>
+      <a class="list-group-item list-group-item-action" id="list-tobi-list" data-toggle="list" href="#list-tobi" role="tab" aria-controls="list-tobi">とび・土工</a>
+      <a class="list-group-item list-group-item-action" id="list-kouzai-list" data-toggle="list" href="#list-kouzai" role="tab" aria-controls="list-kouzai">鋼構造物</a>
+      <a class="list-group-item list-group-item-action" id="list-sekkei-list" data-toggle="list" href="#list-sekkei" role="tab" aria-controls="list-sekkei">設計・デザイン</a>
+      <a class="list-group-item list-group-item-action" id="list-etc-list" data-toggle="list" href="#list-etc" role="tab" aria-controls="list-etc">その他</a>
+    </div>
+  </div>
+  <!-- Tab panes -->
+  <div class="col-8">
+    <div class="tab-content" id="nav-tabContent">
+<!--土木-->
+      <div class="tab-pane fade show active" id="list-doboku" role="tabpanel" aria-labelledby="list-doboku-list">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              足場工事
+             </label>
         </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              舗装工事
+             </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              しゆんせつ工事
+             </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              石工事
+             </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              造園工事
+             </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              土木工事
+             </label>
+        </div>
+      </div>
+<!--建築-->
+  <div class="tab-pane fade" id="list-kentiku" role="tabpanel" aria-labelledby="list-kentiku-list">
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              建築工事
+             </label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              大工工事
+             </label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              左官工事
+             </label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              内装仕上げ工事
+             </label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              屋根工事
+             </label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              板金工事
+             </label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              石工事
+             </label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              タイル工事
+             </label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              レンガ工事
+             </label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              ブロック工事
+             </label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              塗装工事
+             </label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              防水工事
+             </label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              建具工事
+             </label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              ガラス工事
+             </label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              鉄筋工事
+             </label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              耐震工事
+             </label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              断熱工事
+             </label>
+      </div>
+    </div>
+ 
 
-        <div class="form-group mt-2">
-          <%= f.label :url, "ウェブサイト" %><br />
-          <%= f.text_field :url,class: "form-control col-6", placeholder: "(例)https://○○○○○○○○.co.jp" %>
+<!--設備-->
+      <div class="tab-pane fade" id="list-setubi" role="tabpanel" aria-labelledby="list-setubi-list">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              管工事
+            </label>
         </div>
-<%# 資本金 %>
-        <div class="form-group mt-2">
-          <%= f.label :capital, "資本金" %><br />
-          <%= f.text_field :capital,class: "form-control col-6", placeholder: "(例)1000" %>
-         <small class="text-muted">半角数字のみ記入</small>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              機械器具設置工事
+            </label>
         </div>
-<%# 設立年月日 %>
-        <div class="form-group">
-          <div class='form-text-wrap'>
-            <label class="form-text">設立年月日</label>
-          </div>
-          <div class='input-establishment-wrap form-inline'>
-            <%= raw sprintf(
-                        f.date_select(
-                          :establishment,
-                          class:'select-establishment',
-                          id:"establishment-date",
-                          use_month_numbers: true,
-                          prompt:'--',
-                          start_year: 1930,
-                          end_year: (Time.now.year - 5),
-                          date_separator: '%s'),
-                        "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
-          </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              熱絶縁工事
+            </label>
         </div>
-<%# 従業員数 %>
-          <div class="employee mt-3">
-            <%= f.label :employee, '従業員数', {class: 'form-label'} %>
-          </div>
-          <div class="btn-group col-6" data-toggle="buttons">
-            <label class="btn btn-outline-secondary active" style="width:50%">
-              <%= f.radio_button :employee, 0, {checked: true} %> 1人
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              さく井工事
             </label>
-            <label class="btn btn-outline-secondary" style="width:50%">
-              <%= f.radio_button :employee, 2, {} %> 2〜5人
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              ガス管配管工事
             </label>
-             <label class="btn btn-outline-secondary" style="width:50%">
-              <%= f.radio_button :employee, 3, {} %> 6〜10人
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              水道施設工事
             </label>
-              <label class="btn btn-outline-secondary" style="width:50%">
-              <%= f.radio_button :employee, 4, {} %> 11〜30人
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              消防施設工事
             </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              清掃施設工事
             </label>
-              <label class="btn btn-outline-secondary" style="width:50%">
-              <%= f.radio_button :employee, 5, {} %> 31人以上
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              ダクト工事
             </label>
-          </div>
-<%# 会社紹介 %>
-          <div class="description mt-3">
-            <%= f.label :description, '会社概要', {class: 'form-label'} %>
-          </div>
-          <div class="form-group">
-            <%= f.text_area :description, class: "description-form col-6", maxlength: "400"  %>
-         </div>
-         <small class="text-muted"> 最大400文字</small>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              衛生設備工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              管内更生工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              給排水・給湯設備工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              空気調和設備工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              厨房設備工事
+            </label>
+        </div>
+      </div>
+<!--電気・通信-->
+      <div class="tab-pane fade" id="list-denki" role="tabpanel" aria-labelledby="list-denki-list">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              TV電波障害防除設備工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              データ通信設備工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              引込線工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              空中線設備工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              構内電気設備工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              照明工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              情報制御設備工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              信号設備工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              送配電設備工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              電気通信機械設置工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              発電設備工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              変電設備工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              放送機械設置工事
+            </label>
+        </div>
+      </div>
+
+<!--とび・土工-->
+      <div class="tab-pane fade" id="list-tobi" role="tabpanel" aria-labelledby="list-tobi-list">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              くい工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              コンクリート工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              とび工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              はつり工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              解体工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              重量物工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              足場仮説工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              地盤改良工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              鉄骨組立て工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              土工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              PC工事
+            </label>
+        </div>
+      </div>
+<!--鋼構造物-->
+      <div class="tab-pane fade" id="list-kouzai" role="tabpanel" aria-labelledby="list-kouzai-list">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              看板・サイン工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              橋梁工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              建築金物工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              鉄骨工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              鉄塔工事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              溶接工事
+            </label>
+        </div>      
+      </div>
+<!--設計・デザイン-->
+      <div class="tab-pane fade" id="list-sekkei" role="tabpanel" aria-labelledby="list-sekkei-list">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              デザイン
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              設計
+            </label>
+        </div>
+      </div>
+<!--その他-->
+      <div class="tab-pane fade" id="list-etc" role="tabpanel" aria-labelledby="list-etc-list">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              地盤改良
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              地盤調査
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              ユニットバス
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              太陽光発電
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              介護事
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              介護予防福祉用具レンタル
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              ハウスクリーニング
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              不動産
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" >
+            <label class="form-check-label" for="exampleRadios1">
+              その他
+            </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
          <div class="text-center mb-5 col-6">
           <%= f.submit "記録する" ,class:"btn btn-block send-button tx-tfm" %>
