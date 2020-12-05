@@ -8,7 +8,7 @@ class CompanyDetail < ApplicationRecord
     validates :representative
     validates :phone_number
     validates  :capital
-    validates  :estblishment
+    validates  :establishment
     validates  :employee
     validates  :description
   end
