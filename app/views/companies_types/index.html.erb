@@ -4,17 +4,12 @@
 <!-- インフォメーション記述情報-->
   <div class="companies-title mt-3">
     <div calss="row-top">
-      <h1>基本情報を入力する</h1>
-
-      <% unless @company_detail.image.present? %>
-        <p>まだimageが入力されていません<p>
-      <% end %>
-
-      <p>本項目を埋めると「協力会社を探す」の一覧にあなたの情報が掲載されます。<br>発注会社から仕事を受けやすくするためにも、情報編集を行ってください。</p>
+      <h1>業種を入力する</h1>
+        <p>本項目を埋めると「協力会社を探す」の一覧にあなたの情報が掲載されます。<br>発注会社から仕事を受けやすくするためにも、情報編集を行ってください。</p>
     </div>
 <!-- info tab-->
 
-   <%= render "shared/navbar" %>
+     <%= render "shared/navbar" %>
 
 <!-- info form area-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
