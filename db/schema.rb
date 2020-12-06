@@ -83,9 +83,7 @@ ActiveRecord::Schema.define(version: 2020_12_03_030241) do
   end
 
   create_table "company_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "industry_type_1", null: false
-    t.integer "industry_type_2", null: false
-    t.integer "industry_type_3", null: false
+    t.text "industry_type", null: false
     t.bigint "company_detail_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

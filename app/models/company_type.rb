@@ -3,7 +3,7 @@ class CompanyType < ApplicationRecord
   has_one :company_correspondence
 
   with_options presence: true do
-    validates :industry_type_1
+    validates :industry_type
   end
 
 
