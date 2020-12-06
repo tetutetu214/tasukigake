@@ -5,38 +5,16 @@
   <div class="companies-title mt-3">
     <div calss="row-top">
       <h1>基本情報を入力する</h1>
-      <%# <% unless image_url %>
-        <%# <p>まだimageが入力されていません<p> %>
-      <%# <% end %>
+
+      <% unless @company_detail.image.present? %>
+        <p>まだimageが入力されていません<p>
+      <% end %>
+
       <p>本項目を埋めると「協力会社を探す」の一覧にあなたの情報が掲載されます。<br>発注会社から仕事を受けやすくするためにも、情報編集を行ってください。</p>
     </div>
 <!-- info tab-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">プロフィール</a>
-      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="ナビゲーションの切替">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <%= link_to "社名・住所", companies_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "基本情報", companies_details_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">業種</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">対応可能エリア</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">会社PR</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+   <%= render "shared/navbar" %>
 
 <!-- info form area-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
