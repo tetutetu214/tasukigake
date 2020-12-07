@@ -1,5 +1,4 @@
 require 'rails_helper'
 
-RSpec.describe "CompaniesStatuses", type: :request do
-
+RSpec.describe 'CompaniesStatuses', type: :request do
 end

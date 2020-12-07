@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(version: 2020_12_03_030241) do
 
   create_table "company_correspondences", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "prefecture_type", null: false
-    t.bigint "company_type_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["company_type_id"], name: "index_company_correspondences_on_company_type_id"
+    t.index ["user_id"], name: "index_company_correspondences_on_user_id"
   end
 
   create_table "company_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -62,32 +62,30 @@ ActiveRecord::Schema.define(version: 2020_12_03_030241) do
     t.date "establishment", null: false
     t.integer "employee", null: false
     t.text "description", null: false
-    t.bigint "company_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["company_id"], name: "index_company_details_on_company_id"
+    t.index ["user_id"], name: "index_company_details_on_user_id"
   end
 
   create_table "company_statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "prefecture_id", null: false
-    t.integer "insurance_1"
-    t.integer "insurance_2"
-    t.integer "insurance_3"
-    t.integer "license_id"
-    t.integer "tool_id"
+    t.integer "status", null: false
+    t.integer "insurance"
+    t.text "license"
+    t.text "tool"
     t.text "companies_pr"
-    t.bigint "company_correspondence_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["company_correspondence_id"], name: "index_company_statuses_on_company_correspondence_id"
+    t.index ["user_id"], name: "index_company_statuses_on_user_id"
   end
 
   create_table "company_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "industry_type", null: false
-    t.bigint "company_detail_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["company_detail_id"], name: "index_company_types_on_company_detail_id"
+    t.index ["user_id"], name: "index_company_types_on_user_id"
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -123,9 +121,9 @@ ActiveRecord::Schema.define(version: 2020_12_03_030241) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "companies", "users"
-  add_foreign_key "company_correspondences", "company_types"
-  add_foreign_key "company_details", "companies"
-  add_foreign_key "company_statuses", "company_correspondences"
-  add_foreign_key "company_types", "company_details"
+  add_foreign_key "company_correspondences", "users"
+  add_foreign_key "company_details", "users"
+  add_foreign_key "company_statuses", "users"
+  add_foreign_key "company_types", "users"
   add_foreign_key "orders", "users"
 end

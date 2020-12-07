@@ -28,100 +28,136 @@
         </div>
 <!-- インフォメーション 記述情報-->
      <div class="row-main">
-        <%= form_with(model: @company_status,url: "/companies_details" ,local: true) do |f| %>
+        <%= form_with(model: @company_status,url: "/companies_statuses" ,local: true) do |f| %>
         <%= render 'shared/error_messages', model:  f.object %>
-<%# 屋号・会社画像 %>
-        <div class="img-upload mt-5">
-          <div class="weight-bold-text">
-            会社のロゴ画像
-          </div>
-          <div class="click-upload mt-2 ml-3">
-            <%= f.file_field :image, id:"item-image" %>
-          </div>
-        </div>
-<%# 登録区分 %>
+<%# 請負ステータス %>
           <div class="division mt-3">
-            <%= f.label :division, '登録区分', {class: 'form-label'} %>
-          </div>
-          <div class="btn-group col-6" data-toggle="buttons">
-            <label class="btn btn-outline-secondary active" style="width:50%">
-              <%= f.radio_button :division, 0, {checked: true} %> 法人
-            </label>
-            <label class="btn btn-outline-secondary" style="width:50%">
-              <%= f.radio_button :division, 1, {} %> 個人事業主
-            </label>
-          </div>
-<%# 代表者 %>
-        <div class="form-group mt-2">
-            <%= f.label :representative, "代表者名" %><a>必須</a><br />
-            <%= f.text_field :representative,class: "form-control col-6", placeholder: "例)襷太郎 " %>
+            <%= f.label :status, '請負ステータス', {class: 'form-label'} %>
           </div>
 
-        <div class="form-group mt-2">
-          <%= f.label :phone_number, "電話番号" %><a>必須</a><br />
-          <%= f.text_field :phone_number,class: "form-control col-6", placeholder: "(例)01234567890",maxlength: "11" %>
-         <small class="text-muted">ハイフン無し半角数字11桁</small>
-        </div>
-
-        <div class="form-group mt-2">
-          <%= f.label :url, "ウェブサイト" %><br />
-          <%= f.text_field :url,class: "form-control col-6", placeholder: "(例)https://○○○○○○○○.co.jp" %>
-        </div>
-<%# 資本金 %>
-        <div class="form-group mt-2">
-          <%= f.label :capital, "資本金" %><br />
-          <%= f.text_field :capital,class: "form-control col-6", placeholder: "(例)1000" %>
-         <small class="text-muted">半角数字のみ記入</small>
-        </div>
-<%# 設立年月日 %>
-        <div class="form-group">
-          <div class='form-text-wrap'>
-            <label class="form-text">設立年月日</label>
-          </div>
-          <div class='input-establishment-wrap form-inline'>
-            <%= raw sprintf(
-                        f.date_select(
-                          :establishment,
-                          class:'select-establishment',
-                          id:"establishment-date",
-                          use_month_numbers: true,
-                          prompt:'--',
-                          start_year: 1930,
-                          end_year: (Time.now.year - 5),
-                          date_separator: '%s'),
-                        "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
-          </div>
-        </div>
-<%# 従業員数 %>
-          <div class="employee mt-3">
-            <%= f.label :employee, '従業員数', {class: 'form-label'} %>
-          </div>
-          <div class="btn-group col-6" data-toggle="buttons">
-            <label class="btn btn-outline-secondary active" style="width:50%">
-              <%= f.radio_button :employee, 0, {checked: true} %> 1人
+          <div class="btn-group col-6">
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :status, 0, {checked: true} %> 請負募集中
             </label>
             <label class="btn btn-outline-secondary" style="width:50%">
-              <%= f.radio_button :employee, 2, {} %> 2〜5人
+              <%= f.radio_button :status, 1, {} %> 調整可能
             </label>
-             <label class="btn btn-outline-secondary" style="width:50%">
-              <%= f.radio_button :employee, 3, {} %> 6〜10人
-            </label>
-              <label class="btn btn-outline-secondary" style="width:50%">
-              <%= f.radio_button :employee, 4, {} %> 11〜30人
-            </label>
-            </label>
-              <label class="btn btn-outline-secondary" style="width:50%">
-              <%= f.radio_button :employee, 5, {} %> 31人以上
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :status, 2, {} %> 多忙
             </label>
           </div>
+<%# 保険区分 %>
+          <div class="division mt-3" data-toggle="buttons">
+            <%= f.label :insurance, '保険区分', {class: 'form-check-label'} %>
+          </div>
+         <div class="btn-group col-6">
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :insurance, 0, {checked: true} %> 健康
+            </label>
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :insurance, 1, {} %> 年金
+            </label>
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :insurance, 2, {} %> 雇用
+            </label>
+          </div>
+
+<!-- licence -->
+    <div class="weight-bold-text mt-5">
+      技術資格
+    </div>
+<!-- List group -->
+    <div class="row">
+      <div class="col-4">
+        <div class="list-group" id="list-tab" role="tablist">
+          <a class="list-group-item list-group-item-action active" id="list-kanri-list" data-toggle="list" href="#list-kanri" role="tab" aria-controls="list-kanri">監理士技術系</a>
+          <a class="list-group-item list-group-item-action " id="list-gisi-list" data-toggle="list" href="#list-gisi" role="tab" aria-controls="list-gisi">技師系技術系</a>
+          <a class="list-group-item list-group-item-action " id="list-kokka-list" data-toggle="list" href="#list-kokka" role="tab" aria-controls="list-kokka">国家免許資格系</a>
+          <a class="list-group-item list-group-item-action " id="list-etc-list" data-toggle="list" href="#list-etc" role="tab" aria-controls="list-etc">その他</a>
+        </div>
+      </div>
+ <!-- Tab panes -->
+          <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+              <!--監理士技術系-->
+                    <div class="tab-pane fade show active" id="list-kanri" role="tabpanel" aria-labelledby="list-kanri-list">
+                      <% license = ["足場工事","舗装工事","しゆんせつ工事","石工事","造園工事","土木工事"] %>
+                        <% license.each do |q| %><br>
+                        <%= f.check_box :license , {multiple: true},q,nil %>
+                        <%= f.label :license, q %>
+                      <% end %>
+                    </div>
+              <!--技師系技術系-->
+                    <div class="tab-pane fade show " id="list-gisi" role="tabpanel" aria-labelledby="list-gisi-list">
+                      <% license = ["足場工事","舗装工事","しゆんせつ工事","石工事","造園工事","土木工事"] %>
+                        <% license.each do |q| %><br>
+                        <%= f.check_box :license , {multiple: true},q,nil %>
+                        <%= f.label :license, q %>
+                      <% end %>
+                    </div>
+              <!--国家免許資格系-->
+                    <div class="tab-pane fade show " id="list-kokka" role="tabpanel" aria-labelledby="list-kokka-list">
+                      <% license = ["足場工事","舗装工事","しゆんせつ工事","石工事","造園工事","土木工事"] %>
+                        <% license.each do |q| %><br>
+                        <%= f.check_box :license , {multiple: true},q,nil %>
+                        <%= f.label :license, q %>
+                      <% end %>
+                    </div>
+              <!--その他-->
+                    <div class="tab-pane fade show " id="list-etc" role="tabpanel" aria-labelledby="list-etc-list">
+                      <% license = ["足場工事","舗装工事","しゆんせつ工事","石工事","造園工事","土木工事"] %>
+                        <% license.each do |q| %><br>
+                        <%= f.check_box :license , {multiple: true},q,nil %>
+                        <%= f.label :license, q %>
+                      <% end %>
+                    </div>
+             </div>
+           </div>
+    </div>
+
+<!-- holder -->
+    <div class="weight-bold-text mt-5">
+      保有建機
+    </div>
+<!-- List group -->
+    <div class="row">
+      <div class="col-4">
+        <div class="list-group" id="list-tab" role="tablist">
+          <a class="list-group-item list-group-item-action active" id="list-buru-list" data-toggle="list" href="#list-kburu" role="tab" aria-controls="list-buru">ブルドーザー・スクレイパー</a>
+          <a class="list-group-item list-group-item-action " id="list-hossaku-list" data-toggle="list" href="#list-hossaku" role="tab" aria-controls="list-hossaku">掘削機・積み込み機</a>
+        </div>
+      </div>
+ <!-- Tab panes -->
+          <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+          <!--監理士技術系-->
+                <div class="tab-pane fade show active" id="list-buru" role="tabpanel" aria-labelledby="list-buru-list">
+                  <% tool = ["ブルドーザー"] %>
+                    <% tool.each do |q| %><br>
+                    <%= f.check_box :tool , {multiple: true},q,nil %>
+                    <%= f.label :tool, q %>
+                  <% end %>
+                </div>
+          <!--技師系技術系-->
+                <div class="tab-pane fade show " id="list-hossaku" role="tabpanel" aria-labelledby="list-hossaku-list">
+                  <% tool = ["掘削機器"] %>
+                    <% tool.each do |q| %><br>
+                    <%= f.check_box :tool , {multiple: true},q,nil %>
+                    <%= f.label :tool, q %>
+                  <% end %>
+                </div>
+            </div>
+          </div>
+       </div>
 <%# 会社紹介 %>
-          <div class="description mt-3">
-            <%= f.label :description, '会社概要', {class: 'form-label'} %>
+          <div class="companies_pr  mt-3">
+            <%= f.label :companies_pr , '会社PR', {class: 'form-label'} %>
           </div>
           <div class="form-group">
-            <%= f.text_area :description, class: "description-form col-6", maxlength: "400"  %>
+            <%= f.text_area :companies_pr , class: "companies_pr-form col-6", maxlength: "400"  %>
          </div>
          <small class="text-muted"> 最大400文字</small>
+
 
          <div class="text-center mb-5 col-6">
           <%= f.submit "記録する" ,class:"btn btn-block send-button tx-tfm" %>

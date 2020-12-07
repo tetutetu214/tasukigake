@@ -4,6 +4,4 @@ class CompanyType < ApplicationRecord
   with_options presence: true do
     validates :industry_type
   end
-
-
 end

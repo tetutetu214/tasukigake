@@ -10,15 +10,15 @@ class CompaniesDetailsController < ApplicationController
     @company_detail = CompanyDetail.new(company_detail_params)
     if @company_detail.valid?
       @company_detail.save
-      redirect_to  companies_types_path
+      redirect_to companies_types_path
     else
       render :index
-    end 
+    end
   end
 
   private
 
   def company_detail_params
-    params.require(:company_detail).permit(:division, :representative, :phone_number, :url, :capital,:establishment, :employee, :description).merge(user_id: current_user.id)
+    params.require(:company_detail).permit(:division, :representative, :phone_number, :url, :capital, :establishment, :employee, :description).merge(user_id: current_user.id)
   end
 end

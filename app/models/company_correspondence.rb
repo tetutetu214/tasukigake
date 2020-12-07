@@ -7,5 +7,4 @@ class CompanyCorrespondence < ApplicationRecord
   with_options presence: true do
     validates :prefecture_type
   end
-
 end
