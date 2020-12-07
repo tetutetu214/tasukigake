@@ -9,8 +9,8 @@ class CompaniesCorrespondencesController < ApplicationController
 
   def create
     @company_correspondence = CompanyCorrespondence.new(company_correspondence_params)
-    if @company_type.valid?
-      @company_type.save
+    if @company_correspondence.valid?
+      @company_correspondence.save
       redirect_to  companies_types_path
     else
       render :index
