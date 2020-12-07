@@ -1,0 +1,2 @@
+class CompaniesCorrespondencesController < ApplicationController
+end
