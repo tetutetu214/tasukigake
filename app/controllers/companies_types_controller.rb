@@ -19,7 +19,7 @@ class CompaniesTypesController < ApplicationController
   private
 
   def company_type_params
-    params.require(:company_type).permit(:industry_type =>[]).merge(company_detail_id: current_user.id)
+    params.require(:company_type).permit(:industry_type =>[]).merge(user_id: current_user.id)
   end
 end
 

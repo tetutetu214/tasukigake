@@ -1,5 +1,5 @@
 class CompanyStatus < ApplicationRecord
-  belongs_to :company_correspondence
+  belongs_to :user
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :license

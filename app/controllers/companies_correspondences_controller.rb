@@ -20,7 +20,7 @@ class CompaniesCorrespondencesController < ApplicationController
   private
 
   def company_correspondence_params
-    params.require(:company_correspondence).permit(:prefecture_type =>[]).merge(company_type_id: current_user.id)
+    params.require(:company_correspondence).permit(:prefecture_type =>[]).merge(user_id: current_user.id)
   end
 end
 
