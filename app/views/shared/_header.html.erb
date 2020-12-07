@@ -10,7 +10,7 @@
     <ul class="navbar-nav">
   <% if user_signed_in? %>
       <li class="nav-item active">
-          <%= link_to "仕事を探す", orders_path, class: "nav-link text-dark" %>
+        <%= link_to "仕事を探す", orders_path, class: "nav-link text-dark" %>
       </li>
       <li class="nav-item">
         <a class="nav-link text-dark " href="#skill">仕事を依頼する</a>
@@ -22,15 +22,15 @@
         <a class="nav-link text-dark" href="#contact">施工事例を探す</a>
       </li>
 
-        <% if @company.nil?%>
+        <%# <% if @company.nil?%> 
           <li class="nav-item">
             <%= link_to "プロフィール作成", companies_path, class: "nav-link text-dark" %>
           </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "プロフィール編集", edit_company_path(@company), class: "nav-link text-dark" %>
-          </li>
-        <% end %>
+        <%# <% else %>
+          <%# <li class="nav-item"> %>
+            <%# <%= link_to "プロフィール編集", edit_company_path(@company), class: "nav-link text-dark" %>
+          <%# </li> %>
+        <%# <% end %> 
 
       <li class="nav-item">
         <%= link_to "ログアウト", destroy_user_session_path, class: "nav-link text-dark" ,method: :delete %>

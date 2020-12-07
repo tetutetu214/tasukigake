@@ -127,11 +127,18 @@
             <%= f.text_area :description, class: "description-form col-6", maxlength: "400"  %>
          </div>
          <small class="text-muted"> 最大400文字</small>
-
          <div class="text-center mb-5 col-6">
           <%= f.submit "記録する" ,class:"btn btn-block send-button tx-tfm" %>
          </div>
       <% end %>
+
+  <div class="row-middle">
+   <%= link_to  companies_path , class: 'btn btn-default' do  %>
+   <i class="fa fa-arrow-left"></i>
+  <span>戻る</span>
+  <% end %>
+  </div>
+
     </div>  
   </div>
 <!-- フッター -->
