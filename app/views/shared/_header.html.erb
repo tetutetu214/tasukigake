@@ -21,9 +21,17 @@
       <li class="nav-item">
         <a class="nav-link text-dark" href="#contact">施工事例を探す</a>
       </li>
-      <li class="nav-item">
-        <%= link_to "プロフィール作成", companies_path, class: "nav-link text-dark" %>
-      </li>
+
+        <% if @company.nil?%>
+          <li class="nav-item">
+            <%= link_to "プロフィール作成", companies_path, class: "nav-link text-dark" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "プロフィール編集", edit_company_path(@company), class: "nav-link text-dark" %>
+          </li>
+        <% end %>
+
       <li class="nav-item">
         <%= link_to "ログアウト", destroy_user_session_path, class: "nav-link text-dark" ,method: :delete %>
       </li>
