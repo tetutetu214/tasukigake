@@ -1,0 +1,2 @@
+module CompaniesCorrespondencesHelper
+end

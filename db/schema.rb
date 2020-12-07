@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2020_12_03_030241) do
   end
 
   create_table "company_correspondences", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "prefecture_id", null: false
+    t.text "prefecture_type", null: false
     t.bigint "company_type_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -5,5 +5,6 @@ Rails.application.routes.draw do
         resources :companies, only: [:index,:create,:edit,:update]
           resources :companies_details, only: [:index,:create,:edit,:update]
            resources :companies_types, only: [:index,:create,:edit,:update]
+            resources :companies_correspondences, only: [:index,:create,:edit,:update]
 
 end

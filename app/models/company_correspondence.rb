@@ -6,10 +6,7 @@ class CompanyCorrespondence < ApplicationRecord
   belongs_to :prefecture
 
   with_options presence: true do
-    validates :prefecture_id
+    validates :prefecture_type
   end
 
-  with_options numericality: { other_than: 1 } do
-    validates :prefecture_id
-  end
 end
