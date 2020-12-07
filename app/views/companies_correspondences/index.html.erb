@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <%= render "shared/header" %>
+
+<!-- インフォメーション記述情報-->
+  <div class="companies-title mt-3">
+    <div calss="row-top">
+      <h1>対応可能エリアを入力する</h1>
+      <p>本項目を埋めると「協力会社を探す」の一覧にあなたの情報が掲載されます。<br>発注会社から仕事を受けやすくするためにも、情報編集を行ってください。</p>
+    </div>
+<!-- info tab-->
+
+   <%= render "shared/navbar" %>
+
+<!-- info form area-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+    </nav>
+<!-- インフォメーション navbar 記述情報-->
+        <div class="row-border">
+          <form>
+            <div class="form-group mt-3 ">
+              <label for="formControlRange">
+                <h3>プロフィール完了度</h3>
+              </label>
+              <input type="range" class="form-control-range" id="formControlRange">
+            </div>
+          </form>
+        </div>
+<!-- インフォメーション 記述情報-->
+     <div class="row-main">
+        <%= form_with(model: @company_detail,url: "/companies_details" ,local: true) do |f| %>
+        <%= render 'shared/error_messages', model:  f.object %>
+
+
+         <div class="text-center mb-5 col-6">
+          <%= f.submit "記録する" ,class:"btn btn-block send-button tx-tfm" %>
+         </div>
+      <% end %>
+    </div>  
+  </div>
+<!-- フッター -->
+    <%= render "shared/footer" %>
+</div>
