@@ -1,6 +1,5 @@
 class CompanyDetail < ApplicationRecord
-  belongs_to :company, optional: true
-  has_one :company_type
+  belongs_to :user
   has_one_attached :image
 
   with_options presence: true do

@@ -1,6 +1,5 @@
 class Company < ApplicationRecord
   belongs_to :user
-  has_one :company_detail
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture
@@ -9,7 +8,6 @@ class Company < ApplicationRecord
     validates :company_name
     validates :postal_code
     validates :prefecture_id
-    
   end
 
   with_options numericality: { other_than: 1 } do

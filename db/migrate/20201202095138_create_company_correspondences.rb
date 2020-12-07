@@ -2,7 +2,7 @@ class CreateCompanyCorrespondences < ActiveRecord::Migration[6.0]
   def change
     create_table :company_correspondences do |t|
       t.text :prefecture_type, null: false
-      t.references :company_type ,foreign_key: true 
+      t.references :user ,foreign_key: true 
       t.timestamps
     end
   end

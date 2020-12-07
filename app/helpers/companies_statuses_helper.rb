@@ -1,0 +1,2 @@
+module CompaniesStatusesHelper
+end

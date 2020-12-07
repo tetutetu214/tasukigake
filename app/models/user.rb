@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :company
+  has_one :company_detail
+  has_one :company_type
+  has_one :company_correspondence
+  has_one :company_status
 end

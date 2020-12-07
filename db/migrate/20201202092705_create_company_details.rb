@@ -9,7 +9,7 @@ class CreateCompanyDetails < ActiveRecord::Migration[6.0]
       t.date :establishment   , null: false
       t.integer :employee, null: false
       t.text :description , null: false
-      t.references :company ,foreign_key: true 
+      t.references :user ,foreign_key: true 
       t.timestamps
     end
   end
