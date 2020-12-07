@@ -1,46 +1,23 @@
 <div class="container-fluid">
   <%= render "shared/header" %>
 
-<!-- インフォメーション記述情報-->
+<!-- 発注依頼タイトル-->
   <div class="companies-title mt-3">
     <div calss="row-top">
-      <h1>社名・住所を入力する</h1>
-      <p>本項目を埋めると「協力会社を探す」の一覧にあなたの情報が掲載されます。<br>発注会社から仕事を受けやすくするためにも、情報編集を行ってください。</p>
+      <h1>仕事を依頼する</h1>
+      <p>本項目を埋めると「仕事を探す」の一覧に物件の情報が掲載されます。<br>発注会社から仕事を受けやすくするためにも、情報編集を行ってください。</p>
     </div>
-<!-- info tab-->
 
-<%= render "shared/navbar" %>
-
-<!-- info form area-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-    </nav>
-<!-- インフォメーション navbar 記述情報-->
-        <div class="row-border">
-          <form>
-            <div class="form-group mt-3 ">
-              <label for="formControlRange">
-                <h3>プロフィール完了度</h3>
-              </label>
-              <input type="range" class="form-control-range" id="formControlRange">
-            </div>
-          </form>
-        </div>
-<!-- インフォメーション 記述情報--> 
+<!-- 発注インフォメーション--> 
      <div class="row-main">
-        <%= form_with(model: @company,local: true) do |f| %>
+        <%= form_with(model: @order,local: true) do |f| %>
         <%= render 'shared/error_messages', model:  f.object %>
 
         <div class="form-group mt-5">
-          <%= f.label :company_name, "会社名" %><a>必須</a><br />
-          <%= f.text_field :company_name,class: "form-control", placeholder: "例)STIK株式会社" %>
+          <%= f.label :order_title, "案件タイトル" %><a>必須</a><br />
+          <%= f.text_field :order_title,class: "form-control", placeholder: "例)東京都港区○×ビル内装工事" %>
         </div>
 
-        <div class="form-group mt-2">
-          <%= f.label :postal_code, "郵便番号" %><a>必須</a><br />
-          <%= f.text_field :postal_code,class: "form-control", placeholder: "(例)0123456",maxlength: "7" %>
-         <small class="text-muted">ハイフン無し半角英数字7桁</small>
-        </div>
 <!-- インフォメーション 都道府県-->
         <div class="form-group mt-2">
           <%= f.label :prefecture_id, "都道府県" %>
@@ -50,16 +27,201 @@
 
         <div class="form-group">
             <label class="form-text">市区町村</label>
-          <%= f.text_field :city, class:"form-control", placeholder:"例）さいたま市さいたま" %>
+          <%= f.text_field :order_city, class:"form-control", placeholder:"例）港区大門" %>
         </div>
 
         <div class="form-group">
           <div class='form-text-wrap'>
             <label class="form-text">番地</label>
           </div>
-          <%= f.text_field :address, class:"form-control", placeholder:"例）STIKビル1階"%>
+          <%= f.text_field :order_address, class:"form-control", placeholder:"例）STIKビル1階"%>
         </div>
+<!-- インフォメーション はじまり-->
+        <div class="form-group">
+          <div class='form-text-wrap'>
+            <label class="form-text">工開（開始）年月日</label>
+          </div>
+          <div class='input-order_delivery_date_first-wrap form-inline'>
+            <%= raw sprintf(
+                        f.date_select(
+                          :order_delivery_date_first,
+                          class:'select-order_delivery_date_first',
+                          id:"order_delivery_date_first-date",
+                          use_month_numbers: true,
+                          prompt:'--',
+                          start_year: (Time.now.year),
+                          end_year: (Time.now.year + 1),
+                          date_separator: '%s'),
+                        "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+          </div>
+        </div>
+<!-- インフォメーション 終わり-->
+        <div class="form-group">
+          <div class='form-text-wrap'>
+            <label class="form-text">工開（開始）年月日</label>
+          </div>
+          <div class='input-order_delivery_date_date_end-wrap form-inline'>
+            <%= raw sprintf(
+                        f.date_select(
+                          :order_delivery_date_date_end,
+                          class:'select-order_delivery_date_date_end',
+                          id:"order_delivery_date_date_end-date",
+                          use_month_numbers: true,
+                          prompt:'--',
+                          start_year: (Time.now.year),
+                          end_year: (Time.now.year + 1),
+                          date_separator: '%s'),
+                        "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+          </div>
+        </div>
+<!-- インフォメーション 工事種別-->
+          <div class="info_syubetu">
+           工事種別
+          </div>
+        <div class="row mt-3">
+         <!-- List group -->
+          <div class="col-4">
+            <div class="list-group" id="list-tab" role="tablist">
+              <a class="list-group-item list-group-item-action active" id="list-doboku-list" data-toggle="list" href="#list-doboku" role="tab" aria-controls="list-doboku">土木</a>
+              <a class="list-group-item list-group-item-action" id="list-kentiku-list" data-toggle="list" href="#list-kentiku" role="tab" aria-controls="list-kentiku">建築</a>
+              <a class="list-group-item list-group-item-action" id="list-setubi-list" data-toggle="list" href="#list-setubi" role="tab" aria-controls="list-setubi">設備</a>
+              <a class="list-group-item list-group-item-action" id="list-denki-list" data-toggle="list" href="#list-denki" role="tab" aria-controls="list-denki">電気・通信</a>
+              <a class="list-group-item list-group-item-action" id="list-tobi-list" data-toggle="list" href="#list-tobi" role="tab" aria-controls="list-tobi">とび・土工</a>
+              <a class="list-group-item list-group-item-action" id="list-kouzai-list" data-toggle="list" href="#list-kouzai" role="tab" aria-controls="list-kouzai">鋼構造物</a>
+              <a class="list-group-item list-group-item-action" id="list-sekkei-list" data-toggle="list" href="#list-sekkei" role="tab" aria-controls="list-sekkei">設計・デザイン</a>
+              <a class="list-group-item list-group-item-action" id="list-etc-list" data-toggle="list" href="#list-etc" role="tab" aria-controls="list-etc">その他</a>
+            </div>
+          </div>
+          <!-- Tab panes -->
+          <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+              <!--土木-->
+                    <div class="tab-pane fade show active" id="list-doboku" role="tabpanel" aria-labelledby="list-doboku-list">
+                      <% industry_type = ["足場工事","舗装工事","しゆんせつ工事","石工事","造園工事","土木工事"] %>
+                        <% industry_type.each do |q| %><br>
+                        <%= f.check_box :industry_type , {multiple: true},q,nil %>
+                        <%= f.label :industry_type, q %>
+                      <% end %>
+                    </div>
+              <!--建築-->
+                  <div class="tab-pane fade" id="list-kentiku" role="tabpanel" aria-labelledby="list-kentiku-list">
+                    <% industry_type = ["建築工事","大工工事","左官工事","内装仕上げ工事","屋根工事","板金工事","タイル工事","れんが工事","ブロック工事","塗装工事","防水工事","建具工事","ガラス工事","鉄筋工事","耐震工事","断熱工事"] %>
+                        <% industry_type.each do |q| %><br>
+                        <%= f.check_box :industry_type , {multiple: true},q,nil %>
+                        <%= f.label :industry_type, q %>
+                      <% end %>
+                  </div>
+              <!--設備-->
+                    <div class="tab-pane fade" id="list-setubi" role="tabpanel" aria-labelledby="list-setubi-list">
+                     <% industry_type = ["管工事","機械器具設置工事","熱絶縁工事","さく井工事","ガス管配管工事","水道施設工事","消防施設工事","清掃施設工事","ダクト工事","衛生設備工事","管内更生工事","給排水・給湯設備工事","空気調和設備工事","厨房設備工事"] %>
+                        <% industry_type.each do |q| %><br>
+                        <%= f.check_box :industry_type , {multiple: true},q,nil %>
+                        <%= f.label :industry_type, q %>
+                      <% end %>
+                    </div>
+              <!--電気・通信-->
+                    <div class="tab-pane fade" id="list-denki" role="tabpanel" aria-labelledby="list-denki-list">
+                      <% industry_type = ["TV電波障害防除設備工事","データ通信設備工事","引込線工事","空中線設備工事","構内電気設備工事","照明工事","情報制御設備工事","信号設備工事","送配電線工事","電気通信機械設置工事","発電設備工事","変電設備工事","放送機械設置工事"] %>
+                        <% industry_type.each do |q| %><br>
+                        <%= f.check_box :industry_type , {multiple: true},q,nil %>
+                        <%= f.label :industry_type, q %>
+                      <% end %>
+                    </div>
+              <!--とび・土工-->
+                    <div class="tab-pane fade" id="list-tobi" role="tabpanel" aria-labelledby="list-tobi-list">
+                      <% industry_type = ["くい工事","コンクリート工事","とび工事","はつり工事","解体工事","重量物工事","足場仮設工事","地盤改良工事","鉄骨組立て工事","土工事","PC工事"] %>
+                        <% industry_type.each do |q| %><br>
+                        <%= f.check_box :industry_type , {multiple: true},q,nil %>
+                        <%= f.label :industry_type, q %>
+                      <% end %>
+                    </div>
+              <!--鋼構造物-->
+                    <div class="tab-pane fade" id="list-kouzai" role="tabpanel" aria-labelledby="list-kouzai-list">
+                      <% industry_type = ["看板・サイン工事","橋梁工事","建築金物工事","鉄骨工事","鉄塔工事","溶接工事"] %>
+                        <% industry_type.each do |q| %><br>
+                        <%= f.check_box :industry_type , {multiple: true},q,nil %>
+                        <%= f.label :industry_type, q %>
+                      <% end %>
+                    </div>
+              <!--設計・デザイン-->
+                    <div class="tab-pane fade" id="list-sekkei" role="tabpanel" aria-labelledby="list-sekkei-list">
+                      <% industry_type = ["デザイン","設計"] %>
+                        <% industry_type.each do |q| %><br>
+                        <%= f.check_box :industry_type , {multiple: true},q,nil %>
+                        <%= f.label :industry_type, q %>
+                      <% end %>
+                    </div>
+              <!--その他-->
+                    <div class="tab-pane fade" id="list-etc" role="tabpanel" aria-labelledby="list-etc-list">
+                      <% industry_type = ["地盤改良","地盤調査","ユニットバス工事","太陽光発電","介護事","介護予防福祉用具レンタル","ハウスクリーニング","不動産","その他"] %>
+                        <% industry_type.each do |q| %><br>
+                        <%= f.check_box :industry_type , {multiple: true},q,nil %>
+                        <%= f.label :industry_type, q %>
+                      <% end %>
+                    </div>
 
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+<%# 登録区分 %>
+          <div class="division mt-3" data-toggle="buttons">
+            <%= f.label :division, '登録区分', {class: 'form-check-label'} %>
+          </div>
+         <div class="btn-group col-6">
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :division, 0, {checked: true} %> 元請け
+            </label>
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :division, 1, {} %> 一次受け
+            </label>
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :division, 2, {} %> 二次受け
+            </label>
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :division, 3, {} %> 複数受け
+            </label>
+          </div>
+<%# 単金区分 %>
+          <div class="division mt-3" data-toggle="buttons">
+            <%= f.label :unit_price, '単価区分', {class: 'form-check-label-'} %>
+          </div>
+         <div class="btn-group col-6">
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :unit_price, 0, {checked: true} %> 総額
+            </label>
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :unit_price, 1, {} %> 人日
+            </label>
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :unit_price, 2, {} %> 人月
+            </label>
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :unit_price, 3, {} %> 見積相談
+            </label>
+          </div>
+<!-- インフォメーション 予算-->
+        <div class="form-group mt-2">
+          <%= f.label :budget, "想定予算" %><br />
+          <%= f.text_field :budget,class: "form-control col-6", placeholder: "(例)1000" %>万
+         <small class="text-muted">半角数字のみ記入</small>
+        </div>
+<!-- インフォメーション 支払いタイミング-->
+        <div class="form-group mt-2">
+          <%= f.label :payment_id, "支払いタイミング" %>
+          <a>必須</a><br />
+          <%= f.collection_select(:payment_id,Payment.all, :id, :name, {}, {class:"select-box form-control col-6", id:"payment"}) %>
+        </div>
+<!-- インフォメーション PR-->
+          <div class="order_pr"  mt-3">
+            <%= f.label :order_pr , '説明PR', {class: 'form-label'} %>
+          </div>
+          <div class="form-group">
+            <%= f.text_area :order_pr , class: "order_pr-form col-6", maxlength: "400"  %>
+         </div>
+         <small class="text-muted"> 最大400文字</small>
+<!-- インフォメーション 送信-->
         <div class="text-center mb-5">
           <%= f.submit "記録する" ,class:"btn btn-block send-button tx-tfm" %>
         </div>
@@ -68,4 +230,4 @@
   </div>
 <!-- フッター -->
     <%= render "shared/footer" %>
-</div>
+</div>    
