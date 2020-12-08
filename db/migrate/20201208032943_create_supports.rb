@@ -10,7 +10,6 @@ class CreateSupports < ActiveRecord::Migration[6.0]
       t.date :support_delivery_date_end   , null: false
       t.text :industry_type, null: false
       t.integer :support_person_id, null: false
-
       t.date :termination, null: false
       t.integer :feature, null: false
       t.numeric :budget, null: false
