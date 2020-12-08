@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2020_12_03_030241) do
     t.string "order_city"
     t.string "order_address"
     t.date "order_delivery_date_first", null: false
-    t.date "order_delivery_date_date_end", null: false
+    t.date "order_delivery_date_end", null: false
     t.integer "industry_type", null: false
     t.integer "division", null: false
     t.integer "unit_price", null: false

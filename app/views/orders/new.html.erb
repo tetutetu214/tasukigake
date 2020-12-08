@@ -10,31 +10,31 @@
 
 <!-- 発注インフォメーション--> 
      <div class="row-main">
-        <%= form_with(model: @order,local: true) do |f| %>
+        <%= form_with(model: @order,url: orders_path(@order),local: true) do |f| %>
         <%= render 'shared/error_messages', model:  f.object %>
-
+<!-- 発注案件--> 
         <div class="form-group mt-5">
           <%= f.label :order_title, "案件タイトル" %><a>必須</a><br />
-          <%= f.text_field :order_title,class: "form-control", placeholder: "例)東京都港区○×ビル内装工事" %>
+          <%= f.text_field :order_title,class: "form-control col-6", placeholder: "例)東京都港区○×ビル内装工事" %>
         </div>
 
 <!-- インフォメーション 都道府県-->
         <div class="form-group mt-2">
           <%= f.label :prefecture_id, "都道府県" %>
           <a>必須</a><br />
-          <%= f.collection_select(:prefecture_id,Prefecture.all, :id, :name, {}, {class:"select-box form-control", id:"prefecture"}) %>
+          <%= f.collection_select(:prefecture_id,Prefecture.all, :id, :name, {}, {class:"select-box form-control col-6", id:"prefecture"}) %>
         </div>
 
         <div class="form-group">
             <label class="form-text">市区町村</label>
-          <%= f.text_field :order_city, class:"form-control", placeholder:"例）港区大門" %>
+          <%= f.text_field :order_city, class:"form-control col-6", placeholder:"例）港区大門" %>
         </div>
 
         <div class="form-group">
-          <div class='form-text-wrap'>
+          <div class='form-text-wrap '>
             <label class="form-text">番地</label>
           </div>
-          <%= f.text_field :order_address, class:"form-control", placeholder:"例）STIKビル1階"%>
+          <%= f.text_field :order_address, class:"form-control col-6", placeholder:"例）STIKビル1階"%>
         </div>
 <!-- インフォメーション はじまり-->
         <div class="form-group">
@@ -204,7 +204,7 @@
 <!-- インフォメーション 予算-->
         <div class="form-group mt-2">
           <%= f.label :budget, "想定予算" %><br />
-          <%= f.text_field :budget,class: "form-control col-6", placeholder: "(例)1000" %>万
+          <%= f.text_field :budget,class: "form-control col-6", placeholder: "(例)1000" %>
          <small class="text-muted">半角数字のみ記入</small>
         </div>
 <!-- インフォメーション 支払いタイミング-->
