@@ -4,10 +4,8 @@ class ProjectCase < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture
- 
+
   with_options presence: true do
     validates :status
   end
-
-
 end

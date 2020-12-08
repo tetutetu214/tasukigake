@@ -21,5 +21,4 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:order_title, :prefecture_id, :order_city, :order_address, :order_delivery_date_first, :order_delivery_date_end, :division, :unit_price, :budget, :payment_id, :order_pr, industry_type: []).merge(user_id: current_user.id)
   end
-
 end

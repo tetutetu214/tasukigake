@@ -1,10 +1,10 @@
 class Support < ApplicationRecord
   belongs_to :user
-  
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :support_person
   belongs_to :prefecture
-  
+
   with_options presence: true do
     validates :support_title
     validates :prefecture_id
@@ -17,6 +17,4 @@ class Support < ApplicationRecord
     validates :budget
     validates :support_pr
   end
-
-  
 end

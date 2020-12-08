@@ -16,5 +16,4 @@ class Order < ApplicationRecord
     validates :payment_id
     validates :order_pr
   end
-
 end
