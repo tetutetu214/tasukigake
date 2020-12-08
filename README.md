@@ -165,7 +165,7 @@
 | support_address            | string     |                   |
 | support_delivery_date_first| date       | null: false       |
 | support_delivery_date_end  | date       | null: false       |
-| industry_type_id           | integer    | null: false       |
+| industry_type              | integer    | null: false       |
 | support_person_id          | integer    | null: false       |
 | termination                | date       | null: false       |
 | feature                    | integer    |                   |

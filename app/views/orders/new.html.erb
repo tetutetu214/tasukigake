@@ -60,12 +60,12 @@
           <div class='form-text-wrap'>
             <label class="form-text">工開（開始）年月日</label>
           </div>
-          <div class='input-order_delivery_date_date_end-wrap form-inline'>
+          <div class='input-order_delivery_date_end-wrap form-inline'>
             <%= raw sprintf(
                         f.date_select(
-                          :order_delivery_date_date_end,
-                          class:'select-order_delivery_date_date_end',
-                          id:"order_delivery_date_date_end-date",
+                          :order_delivery_date_end,
+                          class:'select-order_delivery_date_end',
+                          id:"order_delivery_date_end-date",
                           use_month_numbers: true,
                           prompt:'--',
                           start_year: (Time.now.year),
