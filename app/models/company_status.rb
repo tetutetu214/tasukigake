@@ -4,5 +4,4 @@ class CompanyStatus < ApplicationRecord
   with_options presence: true do
     validates :status
   end
-
 end

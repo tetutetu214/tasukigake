@@ -15,7 +15,7 @@ class CompaniesController < ApplicationController
 
   def edit
   end
-  
+
   def update
     @company = Company.find(params[:id])
     if @company.valid?

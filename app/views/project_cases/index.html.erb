@@ -5,17 +5,18 @@
 <!-- インフォメーション記述情報-->
   <div class="companies-title mt-3">
     <div calss="row-top">
-      <h1>協力業者を探す・登録する</h1>
-      <p>全国の建設関連の仕事を発注できる協力業者をご紹介します<br>保有資格、保有機械<br>対応可能な業種や工事内容、対応エリアに合った業者を検索可能です</p>
+      <h1>施工事例を探す・登録する</h1>
+      <p>全国の協力会社の施工事例をご紹介します<br>全国の都道府県の企業様より寄せられた実績を、<br>工事別業種や工事内容、対応エリアで検索可能です</p>
+    </div>
 <!-- 新規登録フォーム-->
    <div class="title mt-5">
-     <h3>協力できる期間を登録する</h3>
+     <h3>施工事例を登録する</h3>
    </div>
-    <%= link_to "登録フォーム", new_support_path(@order), class: 'btn btn-default btn-primary btn-lg btn-block' %>
+    <%= link_to "登録フォーム", new_project_case_path(@project_case), class: 'btn btn-default btn-primary btn-lg btn-block' %>
 
 <!-- 検索フォーム-->
    <div class="title mt-5">
-     <h3>協力業者を検索する</h3>
+     <h3>施工事例を検索する</h3>
    </div>
       <form class="form-inline d-flex justify-content-center md-form form-sm">
         <i class="fas fa-search" aria-hidden="true"></i>
@@ -26,7 +27,7 @@
 
 <!-- カード タイトル -->
     <div class="row-middle-title mt-5">
-      <h5>検索上位の協力業者</h5>
+      <h5>検索上位の施工事例</h5>
     </div>
 <!-- カード -->
     <div class="row-middle mt-2 mb-5">

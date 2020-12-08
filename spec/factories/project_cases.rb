@@ -1,4 +1,4 @@
 FactoryBot.define do
-  factory :support do
+  factory :project_case do
   end
 end
