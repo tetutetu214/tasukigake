@@ -5,13 +5,17 @@
 <!-- インフォメーション記述情報-->
   <div class="companies-title mt-3">
     <div calss="row-top">
-      <h1>工事案件を探す</h1>
+      <h1>仕事を探す・依頼する</h1>
       <p>全国の募集中工事案件をご紹介します<br>他にも各都道府県から登録されている工事案件から<br>対応可能な業種や工事内容、現場、工期、予算の条件に合った仕事を検索可能です</p>
 
-
+<!-- 新規登録フォーム-->
+   <div class="title mt-5">
+     <h3>仕事を依頼する</h3>
+   </div>
+    <%= link_to "依頼フォーム", new_order_path(@order), class: 'btn btn-default btn-primary btn-lg btn-block' %>
 <!-- 検索フォーム-->
    <div class="title mt-5">
-     <h3>工事案件を検索する</h3>
+     <h3>仕事を検索する</h3>
    </div>
       <form class="form-inline d-flex justify-content-center md-form form-sm">
         <i class="fas fa-search" aria-hidden="true"></i>
