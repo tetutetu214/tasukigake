@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_03_030241) do
+ActiveRecord::Schema.define(version: 2020_12_08_032943) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -94,8 +94,8 @@ ActiveRecord::Schema.define(version: 2020_12_03_030241) do
     t.string "order_city"
     t.string "order_address"
     t.date "order_delivery_date_first", null: false
-    t.date "order_delivery_date_date_end", null: false
-    t.integer "industry_type_id", null: false
+    t.date "order_delivery_date_end", null: false
+    t.text "industry_type", null: false
     t.integer "division", null: false
     t.integer "unit_price", null: false
     t.decimal "budget", precision: 10, null: false
@@ -105,6 +105,25 @@ ActiveRecord::Schema.define(version: 2020_12_03_030241) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "supports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "support_title", null: false
+    t.integer "prefecture_id", null: false
+    t.string "support_city"
+    t.string "support_address"
+    t.date "support_delivery_date_first", null: false
+    t.date "support_delivery_date_end", null: false
+    t.text "industry_type", null: false
+    t.integer "support_person_id", null: false
+    t.date "termination", null: false
+    t.integer "feature", null: false
+    t.decimal "budget", precision: 10, null: false
+    t.text "support_pr", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_supports_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -126,4 +145,5 @@ ActiveRecord::Schema.define(version: 2020_12_03_030241) do
   add_foreign_key "company_statuses", "users"
   add_foreign_key "company_types", "users"
   add_foreign_key "orders", "users"
+  add_foreign_key "supports", "users"
 end

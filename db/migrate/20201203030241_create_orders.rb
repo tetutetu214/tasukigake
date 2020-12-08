@@ -7,8 +7,8 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.string :order_city
       t.string :order_address
       t.date :order_delivery_date_first   , null: false
-      t.date :order_delivery_date_date_end   , null: false
-      t.integer :industry_type_id, null: false
+      t.date :order_delivery_date_end   , null: false
+      t.text :industry_type, null: false
       t.integer :division, null: false
       t.integer :unit_price, null: false
       t.numeric :budget, null: false

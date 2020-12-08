@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light text-dark bg-light rounded" id="home">
   
-  <a class="navbar-brand text-dark " href="/">Tasuki</a>
+  <%= link_to "Tasuki", root_path , class: "nav-link text-dark" %>
+
   
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -8,41 +9,41 @@
 
   <div class="collapse navbar-collapse " id="navbarNav">
     <ul class="navbar-nav">
-  <% if user_signed_in? %>
+  <%# <% if user_signed_in? %> %>
       <li class="nav-item active">
-          <%= link_to "仕事を探す", orders_path, class: "nav-link text-dark" %>
+        <%= link_to "仕事を探す", orders_path, class: "nav-link text-dark" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-dark " href="#skill">仕事を依頼する</a>
+        <%= link_to "仕事を依頼する", new_order_path, class: "nav-link text-dark" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-dark" href="#contact">協力会社を探す</a>
+        <%= link_to "協力会社を探す",  supports_path, class: "nav-link text-dark" %>
       </li>
       <li class="nav-item">
         <a class="nav-link text-dark" href="#contact">施工事例を探す</a>
       </li>
 
-        <% if @company.nil?%>
+        <%# <% if @company.nil?%> 
           <li class="nav-item">
             <%= link_to "プロフィール作成", companies_path, class: "nav-link text-dark" %>
           </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "プロフィール編集", edit_company_path(@company), class: "nav-link text-dark" %>
-          </li>
-        <% end %>
+        <%# <% else %>
+          <%# <li class="nav-item"> %>
+            <%# <%= link_to "プロフィール編集", edit_company_path(@company), class: "nav-link text-dark" %>
+          <%# </li> %>
+        <%# <% end %> 
 
       <li class="nav-item">
         <%= link_to "ログアウト", destroy_user_session_path, class: "nav-link text-dark" ,method: :delete %>
       </li>
-  <% else %>
+  <%# <% else %> %>
       <li class="nav-item">
         <%= link_to "ログイン", new_user_session_path, class: "nav-link text-dark" %>
       </li>
       <li class="nav-item">
         <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-dark" %>
       </li>
-  <% end %>
+  <%# <% end %> %>
     </ul>
   </div>
 </nav>
