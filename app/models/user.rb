@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :orders
   has_many :supports
+  has_many :project_cases
 
   has_one :company
   has_one :company_detail

@@ -109,14 +109,14 @@ ActiveRecord::Schema.define(version: 2020_12_08_060732) do
 
   create_table "project_cases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "project_case_name", null: false
-    t.integer "project_address_prefecture_id", null: false
+    t.integer "prefecture_id", null: false
     t.string "project_address_city"
     t.string "project_address_address"
     t.text "project_case_pr", null: false
-    t.bigint "company_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["company_id"], name: "index_project_cases_on_company_id"
+    t.index ["user_id"], name: "index_project_cases_on_user_id"
   end
 
   create_table "supports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -157,6 +157,6 @@ ActiveRecord::Schema.define(version: 2020_12_08_060732) do
   add_foreign_key "company_statuses", "users"
   add_foreign_key "company_types", "users"
   add_foreign_key "orders", "users"
-  add_foreign_key "project_cases", "companies"
+  add_foreign_key "project_cases", "users"
   add_foreign_key "supports", "users"
 end
