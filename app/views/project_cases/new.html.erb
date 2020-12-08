@@ -1,0 +1,64 @@
+<div class="container-fluid">
+  <%= render "shared/header" %>
+
+<!-- 発注依頼タイトル-->
+  <div class="companies-title mt-3">
+    <div calss="row-top">
+      <h1>施工事例を探す・登録する</h1>
+      <p>全国の協力会社の施工事例をご紹介します<br>全国の都道府県の企業様より寄せられた実績を、<br>工事別業種や工事内容、対応エリアで検索可能です</p>
+    </div>
+
+<!-- 発注インフォメーション--> 
+     <div class="row-main">
+        <%= form_with(model: @project_case,url: project_cases_path(@project_case),local: true) do |f| %>
+        <%= render 'shared/error_messages', model:  f.object %>
+<!-- 施工案件タイトル--> 
+        <div class="form-group mt-5">
+          <%= f.label :order_title, "施工案件名称" %><a>必須</a><br />
+          <%= f.text_field :project_case_name,class: "form-control col-6", placeholder: "例)○×商店内装工事" %>
+        </div>
+<!-- インフォメーション 都道府県-->
+        <div class="form-group mt-2">
+          <%= f.label :prefecture_id, "都道府県" %>
+          <a>必須</a><br />
+          <%= f.collection_select(:prefecture_id,Prefecture.all, :id, :name, {}, {class:"select-box form-control col-6", id:"prefecture"}) %>
+        </div>
+
+        <div class="form-group">
+            <label class="form-text">市区町村</label>
+          <%= f.text_field :project_case_city, class:"form-control col-6", placeholder:"例）港区大門" %>
+        </div>
+
+        <div class="form-group">
+          <div class='form-text-wrap '>
+            <label class="form-text">番地</label>
+          </div>
+          <%= f.text_field :project_case_address, class:"form-control col-6", placeholder:"例）STIKビル1階"%>
+        </div>
+<!--施工写真-->
+        <div class="img-upload mt-5">
+          <div class="weight-bold-text">
+            施工・竣工写真
+          </div>
+          <div class="click-upload mt-2 ml-3">
+            <%= f.file_field :image, id:"project-image" %>
+          </div>
+        </div>
+<!-- 説明文 -->
+          <div class="project_case_pr"  mt-3">
+            <%= f.label :project_case_pr , '説明文', {class: 'form-label'} %>
+          </div>
+          <div class="form-group">
+            <%= f.text_area :project_case_pr , class: "project_case_pr-form col-6", maxlength: "400",placeholder: "例)内装クロス工事"  %>
+         </div>
+         <small class="text-muted"> 最大400文字</small>
+<!-- インフォメーション 送信-->
+        <div class="text-center mb-5">
+          <%= f.submit "記録する" ,class:"btn btn-block send-button tx-tfm" %>
+        </div>
+      <% end %>
+    </div>  
+  </div>
+<!-- フッター -->
+    <%= render "shared/footer" %>
+</div>    

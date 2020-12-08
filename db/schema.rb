@@ -110,8 +110,8 @@ ActiveRecord::Schema.define(version: 2020_12_08_060732) do
   create_table "project_cases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "project_case_name", null: false
     t.integer "prefecture_id", null: false
-    t.string "project_address_city"
-    t.string "project_address_address"
+    t.string "project_case_city"
+    t.string "project_case_address"
     t.text "project_case_pr", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false

@@ -8,6 +8,6 @@ Rails.application.routes.draw do
               resources :companies_types, only: [:index,:create,:edit,:update]
                 resources :companies_correspondences, only: [:index,:create,:edit,:update]
                   resources :companies_statuses, only: [:index,:create,:edit,:update]
-                    resources :project_case, only: [:index,:new,:create,:edit,:update,:show]
+                    resources :project_cases, only: [:index,:new,:create,:edit,:update,:show]
 
 end
