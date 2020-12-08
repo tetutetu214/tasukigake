@@ -1,0 +1,283 @@
+<div class="container-fluid">
+  <%= render "shared/header" %>
+
+<!-- 発注依頼タイトル-->
+  <div class="companies-title mt-3">
+    <div calss="row-top">
+      <h1>協力できる期間を登録する</h1>
+      <p>全国の建設関連の仕事を発注できる協力業者をご紹介します<br>保有資格、保有機械<br>対応可能な業種や工事内容、対応エリアに合った業者を検索可能です</p>
+    </div>
+
+<!-- 発注インフォメーション--> 
+     <div class="row-main">
+        <%= form_with(model: @support,url: orders_path(@support),local: true) do |f| %>
+        <%= render 'shared/error_messages', model:  f.object %>
+<!-- 対応可能タイトル--> 
+        <div class="form-group mt-5">
+          <%= f.label :order_title, "対応可能タイトル" %><a>必須</a><br />
+          <%= f.text_field :order_title,class: "form-control col-6", placeholder: "例)内装クロス工事" %>
+        </div>
+
+<!-- 対応可能エリア-->
+<!-- List group -->
+      <div class="row mt-3">
+        <div class="col-4">
+          <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action active" id="list-hokkaidou_touhokku-list" data-toggle="list" href="#list-hokkaidou_touhokku" role="tab" aria-controls="list-hokkaidou_touhokku">北海道・東北エリア</a>
+            <a class="list-group-item list-group-item-action" id="list-kantou-list" data-toggle="list" href="#list-kantou" role="tab" aria-controls="list-kantou">関東エリア</a>
+            <a class="list-group-item list-group-item-action" id="list-tyuubu-list" data-toggle="list" href="#list-tyuubu" role="tab" aria-controls="list-tyuubu">中部エリア</a>
+            <a class="list-group-item list-group-item-action" id="list-kansai-list" data-toggle="list" href="#list-kansai" role="tab" aria-controls="list-kansai">関西エリア</a>
+            <a class="list-group-item list-group-item-action" id="list-tyuugoku-list" data-toggle="list" href="#list-tyuugoku" role="tab" aria-controls="list-tyuugoku">中国エリア</a>
+            <a class="list-group-item list-group-item-action" id="list-sikoku-list" data-toggle="list" href="#list-sikoku" role="tab" aria-controls="list-sikoku">四国エリア</a>
+            <a class="list-group-item list-group-item-action" id="list-kyuusyuu-list" data-toggle="list" href="#list-kyuusyuu" role="tab" aria-controls="list-kyuusyuu">九州エリア</a>
+            
+          </div>
+        </div>
+<!-- Tab panes -->
+
+          <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+              <!--北海道・東北-->
+                    <div class="tab-pane fade show active" id="list-hokkaidou_touhokku" role="tabpanel" aria-labelledby="list-hokkaidou_touhokku-list">
+                      <% prefecture_type = ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県"] %>
+                        <% prefecture_type.each do |q| %><br>
+                        <%= f.check_box :prefecture_type , {multiple: true},q,nil %>
+                        <%= f.label :prefecture_type, q %>
+                      <% end %>
+                    </div>
+              <!--関東-->
+                  <div class="tab-pane fade" id="list-kantou" role="tabpanel" aria-labelledby="list-kantou-list">
+                    <% prefecture_type = ["茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県"] %>
+                        <% prefecture_type.each do |q| %><br>
+                        <%= f.check_box :prefecture_type , {multiple: true},q,nil %>
+                        <%= f.label :prefecture_type, q %>
+                      <% end %>
+                  </div>
+              <!--中部-->
+                    <div class="tab-pane fade" id="list-tyuubu" role="tabpanel" aria-labelledby="list-tyuubu-list">
+                     <% prefecture_type = ["新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県"] %>
+                        <% prefecture_type.each do |q| %><br>
+                        <%= f.check_box :prefecture_type , {multiple: true},q,nil %>
+                        <%= f.label :prefecture_type, q %>
+                      <% end %>
+                    </div>
+              <!--関西-->
+                    <div class="tab-pane fade" id="list-kansai" role="tabpanel" aria-labelledby="list-kansai-list">
+                      <% prefecture_type = ["三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県"] %>
+                        <% prefecture_type.each do |q| %><br>
+                        <%= f.check_box :prefecture_type , {multiple: true},q,nil %>
+                        <%= f.label :prefecture_type, q %>
+                      <% end %>
+                    </div>
+              <!--中国-->
+                    <div class="tab-pane fade" id="list-tyuugoku" role="tabpanel" aria-labelledby="list-tyuugoku-list">
+                      <% prefecture_type = ["鳥取県","島根県","岡山県","広島県","山口県"] %>
+                        <% prefecture_type.each do |q| %><br>
+                        <%= f.check_box :prefecture_type , {multiple: true},q,nil %>
+                        <%= f.label :prefecture_type, q %>
+                      <% end %>
+                    </div>
+              <!--四国-->
+                    <div class="tab-pane fade" id="list-sikoku" role="tabpanel" aria-labelledby="list-sikoku-list">
+                      <% prefecture_type = ["徳島県","香川県","愛媛県","高知県"] %>
+                        <% prefecture_type.each do |q| %><br>
+                        <%= f.check_box :prefecture_type , {multiple: true},q,nil %>
+                        <%= f.label :prefecture_type, q %>
+                      <% end %>
+                    </div>
+              <!--九州-->
+                    <div class="tab-pane fade" id="list-kyuusyuu" role="tabpanel" aria-labelledby="list-kyuusyuu-list">
+                      <% prefecture_type = ["福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"] %>
+                        <% prefecture_type.each do |q| %><br>
+                        <%= f.check_box :prefecture_type , {multiple: true},q,nil %>
+                        <%= f.label :prefecture_type, q %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+<!-- 対応可能期間はじまり-->
+        <div class="form-group">
+          <div class='form-text-wrap'>
+            <label class="form-text">工開（開始）年月日</label>
+          </div>
+          <div class='input-order_delivery_date_first-wrap form-inline'>
+            <%= raw sprintf(
+                        f.date_select(
+                          :order_delivery_date_first,
+                          class:'select-order_delivery_date_first',
+                          id:"order_delivery_date_first-date",
+                          use_month_numbers: true,
+                          prompt:'--',
+                          start_year: (Time.now.year),
+                          end_year: (Time.now.year + 1),
+                          date_separator: '%s'),
+                        "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+          </div>
+        </div>
+<!-- 対応可能期間終わり-->
+        <div class="form-group">
+          <div class='form-text-wrap'>
+            <label class="form-text">工開（開始）年月日</label>
+          </div>
+          <div class='input-order_delivery_date_end-wrap form-inline'>
+            <%= raw sprintf(
+                        f.date_select(
+                          :order_delivery_date_end,
+                          class:'select-order_delivery_date_end',
+                          id:"order_delivery_date_end-date",
+                          use_month_numbers: true,
+                          prompt:'--',
+                          start_year: (Time.now.year),
+                          end_year: (Time.now.year + 1),
+                          date_separator: '%s'),
+                        "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+          </div>
+        </div>
+<!-- インフォメーション 工事種別-->
+          <div class="info_syubetu">
+           工事種別
+          </div>
+        <div class="row mt-3">
+         <!-- List group -->
+          <div class="col-4">
+            <div class="list-group" id="list-tab" role="tablist">
+              <a class="list-group-item list-group-item-action active" id="list-doboku-list" data-toggle="list" href="#list-doboku" role="tab" aria-controls="list-doboku">土木</a>
+              <a class="list-group-item list-group-item-action" id="list-kentiku-list" data-toggle="list" href="#list-kentiku" role="tab" aria-controls="list-kentiku">建築</a>
+              <a class="list-group-item list-group-item-action" id="list-setubi-list" data-toggle="list" href="#list-setubi" role="tab" aria-controls="list-setubi">設備</a>
+              <a class="list-group-item list-group-item-action" id="list-denki-list" data-toggle="list" href="#list-denki" role="tab" aria-controls="list-denki">電気・通信</a>
+              <a class="list-group-item list-group-item-action" id="list-tobi-list" data-toggle="list" href="#list-tobi" role="tab" aria-controls="list-tobi">とび・土工</a>
+              <a class="list-group-item list-group-item-action" id="list-kouzai-list" data-toggle="list" href="#list-kouzai" role="tab" aria-controls="list-kouzai">鋼構造物</a>
+              <a class="list-group-item list-group-item-action" id="list-sekkei-list" data-toggle="list" href="#list-sekkei" role="tab" aria-controls="list-sekkei">設計・デザイン</a>
+              <a class="list-group-item list-group-item-action" id="list-etc-list" data-toggle="list" href="#list-etc" role="tab" aria-controls="list-etc">その他</a>
+            </div>
+          </div>
+          <!-- Tab panes -->
+          <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+              <!--土木-->
+                    <div class="tab-pane fade show active" id="list-doboku" role="tabpanel" aria-labelledby="list-doboku-list">
+                      <% industry_type = ["足場工事","舗装工事","しゆんせつ工事","石工事","造園工事","土木工事"] %>
+                        <% industry_type.each do |q| %><br>
+                        <%= f.check_box :industry_type , {multiple: true},q,nil %>
+                        <%= f.label :industry_type, q %>
+                      <% end %>
+                    </div>
+              <!--建築-->
+                  <div class="tab-pane fade" id="list-kentiku" role="tabpanel" aria-labelledby="list-kentiku-list">
+                    <% industry_type = ["建築工事","大工工事","左官工事","内装仕上げ工事","屋根工事","板金工事","タイル工事","れんが工事","ブロック工事","塗装工事","防水工事","建具工事","ガラス工事","鉄筋工事","耐震工事","断熱工事"] %>
+                        <% industry_type.each do |q| %><br>
+                        <%= f.check_box :industry_type , {multiple: true},q,nil %>
+                        <%= f.label :industry_type, q %>
+                      <% end %>
+                  </div>
+              <!--設備-->
+                    <div class="tab-pane fade" id="list-setubi" role="tabpanel" aria-labelledby="list-setubi-list">
+                     <% industry_type = ["管工事","機械器具設置工事","熱絶縁工事","さく井工事","ガス管配管工事","水道施設工事","消防施設工事","清掃施設工事","ダクト工事","衛生設備工事","管内更生工事","給排水・給湯設備工事","空気調和設備工事","厨房設備工事"] %>
+                        <% industry_type.each do |q| %><br>
+                        <%= f.check_box :industry_type , {multiple: true},q,nil %>
+                        <%= f.label :industry_type, q %>
+                      <% end %>
+                    </div>
+              <!--電気・通信-->
+                    <div class="tab-pane fade" id="list-denki" role="tabpanel" aria-labelledby="list-denki-list">
+                      <% industry_type = ["TV電波障害防除設備工事","データ通信設備工事","引込線工事","空中線設備工事","構内電気設備工事","照明工事","情報制御設備工事","信号設備工事","送配電線工事","電気通信機械設置工事","発電設備工事","変電設備工事","放送機械設置工事"] %>
+                        <% industry_type.each do |q| %><br>
+                        <%= f.check_box :industry_type , {multiple: true},q,nil %>
+                        <%= f.label :industry_type, q %>
+                      <% end %>
+                    </div>
+              <!--とび・土工-->
+                    <div class="tab-pane fade" id="list-tobi" role="tabpanel" aria-labelledby="list-tobi-list">
+                      <% industry_type = ["くい工事","コンクリート工事","とび工事","はつり工事","解体工事","重量物工事","足場仮設工事","地盤改良工事","鉄骨組立て工事","土工事","PC工事"] %>
+                        <% industry_type.each do |q| %><br>
+                        <%= f.check_box :industry_type , {multiple: true},q,nil %>
+                        <%= f.label :industry_type, q %>
+                      <% end %>
+                    </div>
+              <!--鋼構造物-->
+                    <div class="tab-pane fade" id="list-kouzai" role="tabpanel" aria-labelledby="list-kouzai-list">
+                      <% industry_type = ["看板・サイン工事","橋梁工事","建築金物工事","鉄骨工事","鉄塔工事","溶接工事"] %>
+                        <% industry_type.each do |q| %><br>
+                        <%= f.check_box :industry_type , {multiple: true},q,nil %>
+                        <%= f.label :industry_type, q %>
+                      <% end %>
+                    </div>
+              <!--設計・デザイン-->
+                    <div class="tab-pane fade" id="list-sekkei" role="tabpanel" aria-labelledby="list-sekkei-list">
+                      <% industry_type = ["デザイン","設計"] %>
+                        <% industry_type.each do |q| %><br>
+                        <%= f.check_box :industry_type , {multiple: true},q,nil %>
+                        <%= f.label :industry_type, q %>
+                      <% end %>
+                    </div>
+              <!--その他-->
+                    <div class="tab-pane fade" id="list-etc" role="tabpanel" aria-labelledby="list-etc-list">
+                      <% industry_type = ["地盤改良","地盤調査","ユニットバス工事","太陽光発電","介護事","介護予防福祉用具レンタル","ハウスクリーニング","不動産","その他"] %>
+                        <% industry_type.each do |q| %><br>
+                        <%= f.check_box :industry_type , {multiple: true},q,nil %>
+                        <%= f.label :industry_type, q %>
+                      <% end %>
+                    </div>
+
+                  </div>
+                </div>
+            </div>
+          </div>
+        
+<%# 対応人数 %>
+        <div class="form-group mt-2">
+          <%= f.label :support_person_id, "人数" %>
+          <a>必須</a><br />
+          <%= f.collection_select(:support_person_id,SupportPerson.all, :id, :name, {}, {class:"select-box form-control col-6", id:"support_person"}) %>
+        </div>
+<!-- 対応可能期間いつまで-->
+        <div class="form-group">
+          <div class='form-text-wrap'>
+            <label class="form-text">掲載終了期間</label>
+          </div>
+          <div class='input-order_delivery_date_end-wrap form-inline'>
+            <%= raw sprintf(
+                        f.date_select(
+                          :order_delivery_date_end,
+                          class:'select-order_delivery_date_end',
+                          id:"order_delivery_date_end-date",
+                          use_month_numbers: true,
+                          prompt:'--',
+                          start_year: (Time.now.year),
+                          end_year: (Time.now.year + 1),
+                          date_separator: '%s'),
+                        "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+          </div>
+        </div>
+<!-- 募集特徴 -->
+    <div class="weight-bold-text mt-5">
+      募集の特徴
+    </div>
+<!-- List group -->
+      <div class="tab-pane fade show " id="list-etc" role="tabpanel" aria-labelledby="list-etc-list">
+        <% license = ["今すぐ動ける","複数人稼働可能","一人親方","お仲間紹介可能","長期可能","短期のみ","長期可能","長期可能","長期可能","長期可能","長期可能","長期可能","長期可能"] %>
+          <% license.each do |q| %><br>
+          <%= f.check_box :license , {multiple: true},q,nil %>
+          <%= f.label :license, q %>
+        <% end %>
+      </div>
+<!-- インフォメーション PR-->
+          <div class="order_pr"  mt-3">
+            <%= f.label :order_pr , '説明PR', {class: 'form-label'} %>
+          </div>
+          <div class="form-group">
+            <%= f.text_area :order_pr , class: "order_pr-form col-6", maxlength: "400",placeholder: "例)内装クロス工事"  %>
+         </div>
+         <small class="text-muted"> 最大400文字</small>
+<!-- インフォメーション 送信-->
+        <div class="text-center mb-5">
+          <%= f.submit "記録する" ,class:"btn btn-block send-button tx-tfm" %>
+        </div>
+      <% end %>
+    </div>  
+  </div>
+<!-- フッター -->
+    <%= render "shared/footer" %>
+</div>    
