@@ -8,7 +8,6 @@ class SupportsController < ApplicationController
 
   def create
     @support = Support.new(support_params)
-    binding.pry
     if @support.valid?
       @support.save
       redirect_to support_path
