@@ -31,16 +31,11 @@
         <%= form_with(model: @company_detail,url: "/companies_details" ,local: true) do |f| %>
         <%= render 'shared/error_messages', model:  f.object %>
 <%# 屋号・会社画像 %>
-
-      <% unless @company_detail.image.present? %>
-        <p>まだimageが入力されていません<p>
-      <% end %>
-
-        <div class="img-upload mt-5">
+        <div class="iamge mt-5">
           <div class="weight-bold-text">
             会社のロゴ画像
           </div>
-          <div class="click-upload mt-2 ml-3">
+          <div class="click-image mt-2 ml-3">
             <%= f.file_field :image, id:"item-image" %>
           </div>
         </div>

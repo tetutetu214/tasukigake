@@ -19,6 +19,6 @@ class CompaniesDetailsController < ApplicationController
   private
 
   def company_detail_params
-    params.require(:company_detail).permit(:division, :representative, :phone_number, :url, :capital, :establishment, :employee, :description).merge(user_id: current_user.id)
+    params.require(:company_detail).permit(:division, :representative, :phone_number, :url, :capital, :establishment, :employee, :description, :image).merge(user_id: current_user.id)
   end
 end
