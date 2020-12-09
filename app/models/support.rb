@@ -7,14 +7,13 @@ class Support < ApplicationRecord
 
   with_options presence: true do
     validates :support_title
-    validates :prefecture_id
+    validates :prefecture_type
     validates :support_delivery_date_first
     validates :support_delivery_date_end
     validates :industry_type
     validates :support_person_id
     validates :termination
     validates :feature
-    validates :budget
     validates :support_pr
   end
 end

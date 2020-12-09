@@ -10,16 +10,15 @@
 
 <!-- 発注インフォメーション--> 
      <div class="row-main">
-        <%= form_with(model: @support,url: orders_path(@support),local: true) do |f| %>
+        <%= form_with(model: @support,url: supports_path,local: true) do |f| %>
         <%= render 'shared/error_messages', model:  f.object %>
 <!-- 対応可能タイトル--> 
         <div class="form-group mt-5">
-          <%= f.label :order_title, "対応可能タイトル" %><a>必須</a><br />
-          <%= f.text_field :order_title,class: "form-control col-6", placeholder: "例)内装クロス工事" %>
+          <%= f.label :support_title, "対応可能名称" %><a>必須</a><br />
+          <%= f.text_field :support_title,class: "form-control col-6", placeholder: "例)内装クロス工事" %>
         </div>
 
 <!-- 対応可能エリア-->
-<!-- List group -->
       <div class="row mt-3">
         <div class="col-4">
           <div class="list-group" id="list-tab" role="tablist">
@@ -34,7 +33,6 @@
           </div>
         </div>
 <!-- Tab panes -->
-
           <div class="col-8">
             <div class="tab-content" id="nav-tabContent">
               <!--北海道・東北-->
@@ -102,16 +100,16 @@
           <div class='form-text-wrap'>
             <label class="form-text">工開（開始）年月日</label>
           </div>
-          <div class='input-order_delivery_date_first-wrap form-inline'>
+          <div class='input-support_delivery_date_first-wrap form-inline'>
             <%= raw sprintf(
                         f.date_select(
-                          :order_delivery_date_first,
-                          class:'select-order_delivery_date_first',
-                          id:"order_delivery_date_first-date",
+                          :support_delivery_date_first,
+                          class:'select-support_delivery_date_first',
+                          id:"support_delivery_date_first-date",
                           use_month_numbers: true,
                           prompt:'--',
                           start_year: (Time.now.year),
-                          end_year: (Time.now.year + 1),
+                          end_year: (Time.now.year + 5),
                           date_separator: '%s'),
                         "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
           </div>
@@ -121,16 +119,16 @@
           <div class='form-text-wrap'>
             <label class="form-text">工開（開始）年月日</label>
           </div>
-          <div class='input-order_delivery_date_end-wrap form-inline'>
+          <div class='input-support_delivery_date_end-wrap form-inline'>
             <%= raw sprintf(
                         f.date_select(
-                          :order_delivery_date_end,
-                          class:'select-order_delivery_date_end',
-                          id:"order_delivery_date_end-date",
+                          :support_delivery_date_end,
+                          class:'select-support_delivery_date_end',
+                          id:"support_delivery_date_end-date",
                           use_month_numbers: true,
                           prompt:'--',
                           start_year: (Time.now.year),
-                          end_year: (Time.now.year + 1),
+                          end_year: (Time.now.year + 5),
                           date_separator: '%s'),
                         "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
           </div>
@@ -237,12 +235,12 @@
           <div class='form-text-wrap'>
             <label class="form-text">掲載終了期間</label>
           </div>
-          <div class='input-order_delivery_date_end-wrap form-inline'>
+          <div class='input-termination-wrap form-inline'>
             <%= raw sprintf(
                         f.date_select(
-                          :order_delivery_date_end,
-                          class:'select-order_delivery_date_end',
-                          id:"order_delivery_date_end-date",
+                          :termination,
+                          class:'select-termination',
+                          id:"termination-date",
                           use_month_numbers: true,
                           prompt:'--',
                           start_year: (Time.now.year),
@@ -257,18 +255,18 @@
     </div>
 <!-- List group -->
       <div class="tab-pane fade show " id="list-etc" role="tabpanel" aria-labelledby="list-etc-list">
-        <% license = ["今すぐ動ける","複数人稼働可能","一人親方","お仲間紹介可能","長期可能","短期のみ","長期可能","長期可能","長期可能","長期可能","長期可能","長期可能","長期可能"] %>
-          <% license.each do |q| %><br>
-          <%= f.check_box :license , {multiple: true},q,nil %>
-          <%= f.label :license, q %>
+        <% feature = ["今すぐ動ける","複数人稼働可能","一人親方","お仲間紹介可能","長期可能","短期のみ","長期可能","長期可能","長期可能","長期可能","長期可能","長期可能","長期可能"] %>
+          <% feature.each do |q| %><br>
+          <%= f.check_box :feature , {multiple: true},q,nil %>
+          <%= f.label :feature, q %>
         <% end %>
       </div>
 <!-- インフォメーション PR-->
-          <div class="order_pr"  mt-3">
-            <%= f.label :order_pr , '説明PR', {class: 'form-label'} %>
+          <div class="support_pr"  mt-3">
+            <%= f.label :support_pr , '説明PR', {class: 'form-label'} %>
           </div>
           <div class="form-group">
-            <%= f.text_area :order_pr , class: "order_pr-form col-6", maxlength: "400",placeholder: "例)内装クロス工事"  %>
+            <%= f.text_area :support_pr , class: "support_pr-form col-6", maxlength: "400",placeholder: "例)内装クロス工事"  %>
          </div>
          <small class="text-muted"> 最大400文字</small>
 <!-- インフォメーション 送信-->

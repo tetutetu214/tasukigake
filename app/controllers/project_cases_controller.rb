@@ -12,7 +12,7 @@ class ProjectCasesController < ApplicationController
       @project_case.save
       redirect_to project_case_path
     else
-      render :index
+      render :new
     end
   end
 

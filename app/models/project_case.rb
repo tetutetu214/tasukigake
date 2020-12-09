@@ -7,7 +7,7 @@ class ProjectCase < ApplicationRecord
 
   with_options presence: true do
     validates :project_case_name
-    validates :project_address_prefecture_id
+    validates :prefecture_id
     validates :project_case_pr
   end
 end

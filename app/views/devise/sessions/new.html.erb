@@ -1,7 +1,9 @@
-<div class="container text-center">
+<div class="container-fluid text-center">
+  <%= render "shared/header" %>
+
   <h2>Log in</h2>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_with model: @user , url: user_session_path, class: 'registration-main', local: true do |f| %>
 
     <div class='login-flash-message mb-3'>
       <%= flash[:notice] %>
@@ -31,4 +33,6 @@
   <% end %>
 
   <%= render "/shared/links" %>
+  <!-- フッター -->
+    <%= render "shared/footer" %>
 </div>

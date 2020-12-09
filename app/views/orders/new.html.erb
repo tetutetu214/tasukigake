@@ -10,7 +10,7 @@
 
 <!-- 発注インフォメーション--> 
      <div class="row-main">
-        <%= form_with(model: @order,url: orders_path(@order),local: true) do |f| %>
+        <%= form_with(model: @order,url: orders_path,local: true) do |f| %>
         <%= render 'shared/error_messages', model:  f.object %>
 <!-- 発注案件--> 
         <div class="form-group mt-5">

@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_060732) do
 
   create_table "project_cases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "project_case_name", null: false
-    t.integer "prefecture_id", null: false
+    t.text "prefecture_id", null: false
     t.string "project_case_city"
     t.string "project_case_address"
     t.text "project_case_pr", null: false
@@ -121,16 +121,13 @@ ActiveRecord::Schema.define(version: 2020_12_08_060732) do
 
   create_table "supports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "support_title", null: false
-    t.integer "prefecture_id", null: false
-    t.string "support_city"
-    t.string "support_address"
+    t.text "prefecture_type", null: false
     t.date "support_delivery_date_first", null: false
     t.date "support_delivery_date_end", null: false
     t.text "industry_type", null: false
     t.integer "support_person_id", null: false
     t.date "termination", null: false
-    t.integer "feature", null: false
-    t.decimal "budget", precision: 10, null: false
+    t.text "feature", null: false
     t.text "support_pr", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
