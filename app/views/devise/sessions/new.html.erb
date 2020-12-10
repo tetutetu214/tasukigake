@@ -2,7 +2,7 @@
   <%= render "shared/header" %>
 
   <h2>Log in</h2>
-
+  
   <%= form_with model: @user , url: user_session_path, class: 'registration-main', local: true do |f| %>
 
     <div class='login-flash-message mb-3'>
@@ -33,6 +33,8 @@
   <% end %>
 
   <%= render "/shared/links" %>
+<%# 簡単ログイン %>
+  <%= render "shared/testuser" %>
   <!-- フッター -->
     <%= render "shared/footer" %>
 </div>

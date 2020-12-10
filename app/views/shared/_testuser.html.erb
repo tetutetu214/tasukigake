@@ -1,0 +1,18 @@
+ <h4 class="mt-5">簡単ログイン</h4>
+  
+  <%= form_with model: @user , url: user_session_path, class: 'registration-main', local: true do |f| %>
+
+    <div class="field">
+      <%= f.hidden_field :email, value: "test@example.com" %>
+    </div>
+
+    <div class="field">
+      <%= f.hidden_field :password, value: "testtest" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "簡単ログイン" %>
+    </div>
+  <% end %>
+
+</div>
