@@ -54,7 +54,11 @@ GitHubのURL:https://github.com/tetutetu214/tasukigake
 
 サーバーサイドのロジックはRuby+RubyOnRailsでプログラミングをしています<br>
 フロントエンドのデザインはBootstrapを使用しながら、動きをつけたいっときはjqueryで実装しました。<br>
-AWSのEC2にCapistranoを実装し自動デプロイを実現するようにしています。
+AWSのEC2にCapistranoを実装し自動デプロイを実現するようにしています。<br>
+
+
+# インフラ設計図<br>
+<img width="713" alt="4a273391264603673911efa11aa93e6d" src="https://user-images.githubusercontent.com/69411047/101769421-478cb100-3b2a-11eb-8cfd-2f54fb74d593.png">
 
 # テーブル設計
 ![er](https://user-images.githubusercontent.com/69411047/101755507-4a7ea600-3b18-11eb-9515-15c05b597589.png)
