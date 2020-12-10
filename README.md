@@ -1,4 +1,3 @@
-# アプリの概要
 ## 名称
 Tasuki
 Task :仕事　＋　suki:好き　とを掛けて襷という繋がりを持たせるという意味合いで命名しました
@@ -23,8 +22,6 @@ Task :仕事　＋　suki:好き　とを掛けて襷という繋がりを持た
 GitHubのURL:https://github.com/tetutetu214/tasukigake
 
 ## 洗い出した要件　機能一覧
-
-## 機能一覧
 - ユーザー登録関連<br>
 ・新規登録、ログイン、ログアウト<br>
 ・簡単ログイン<br>
@@ -42,6 +39,22 @@ GitHubのURL:https://github.com/tetutetu214/tasukigake
 ・bootstrap
 - PAY.JP（未実装）<br>
 
+## 使用技術
+- フロントエンド<br>
+・HTML/SCSS/Bootstrap<br>
+・jquery
+- バックエンド<br>
+・Ruby 2.6.5<br>
+・RubyOnRails 6.0.0
+- インフラ<br>
+・AWS（S3、EC2,IAM）<br>
+・mysql<br>
+・nginx<br>
+・Capistrano<br>
+
+サーバーサイドのロジックはRuby+RubyOnRailsでプログラミングをしています<br>
+フロントエンドのデザインはBootstrapを使用しながら、動きをつけたいっときはjqueryで実装しました。<br>
+AWSのEC2にCapistranoを実装し自動デプロイを実現するようにしています。
 
 # テーブル設計
 
