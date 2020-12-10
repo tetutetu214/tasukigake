@@ -57,7 +57,7 @@ GitHubのURL:https://github.com/tetutetu214/tasukigake
 AWSのEC2にCapistranoを実装し自動デプロイを実現するようにしています。
 
 # テーブル設計
-
+![er](https://user-images.githubusercontent.com/69411047/101755507-4a7ea600-3b18-11eb-9515-15c05b597589.png)
 ## users テーブル
 
 | Column           | Type   | Options     |
