@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'tops#index'
-    devise_for :users
+    devise_for :users, controllers: {
+      registrations: 'users/registrations'
+    }
       resources :orders, only: [:index,:new,:create,:edit,:update]
         resources :supports, only: [:index, :new, :create,:edit,:update,:show]
           resources :companies, only: [:index,:create,:edit,:update]
