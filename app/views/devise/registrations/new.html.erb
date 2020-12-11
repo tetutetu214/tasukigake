@@ -5,8 +5,9 @@
 
   <%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
   
-    <div class='login-flash-message mb-3'>
-      <%= render 'shared/error_messages', model:  f.object %>
+   
+    <div class='registration-message mb-3'>
+      <%# <%= render 'shared/error_messages', resource: @user %>
     </div>
 
     <div class="field">
@@ -28,7 +29,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Sign up" %>
+      <%= f.submit "NEXT" %>
     </div>
 <% end %>
 
