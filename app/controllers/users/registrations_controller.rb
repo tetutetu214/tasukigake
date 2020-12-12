@@ -39,6 +39,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     render :new_companies_types
   end
 
+  def create_companies_types
+    @user = User.new(session['devise.regist_data']['user']['company']['company_detail'])
+    @company_type = CompanyType.new(company_type_params)
+    render :new_companies_details and return unless @company_type.valid?
+    session['devise.regist_data'] = { user: @user.attributes, company_type: @company_type.attributes }
+    session['devise.regist_data'][:company_type] = params[:company_type]
+    @company_correspondence = @user.build_company_correspondence
+    render :new_companies_correspondences
+  end
+
   private
 
   def company_params
@@ -47,6 +57,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def company_detail_params
     params.require(:company_detail).permit(:division, :representative, :phone_number, :url, :capital, :establishment, :employee, :description, :image)
+  end
+
+  def company_type_params
+    params.require(:company_type).permit(industry_type: []).merge(user_id: current_user.id)
   end
   # GET /resource/sign_up
   # def new
