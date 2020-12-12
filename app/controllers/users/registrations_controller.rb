@@ -18,7 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     render :new_companies
   end
 
-  def create_company
+  def create_companies
     @user = User.new(session['devise.regist_data']['user'])
     @company = Company.new(company_params)
       unless @company.valid?
@@ -26,7 +26,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
     session['devise.regist_data'] = { user: @user.attributes ,company: @company.attributes }
     session['devise.regist_data'][:user]['password'] [:company] = params[:user][:password][:company]
-    @companies_detail = @user.build_company_detail
+    @company_detail = @user.build_company_detail
     render :new_company_details
   end
 
