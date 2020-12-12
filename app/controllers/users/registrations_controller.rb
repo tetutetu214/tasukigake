@@ -10,9 +10,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.new(sign_up_params)
-      unless @user.valid?
-        render :new and return
-      end
+    render :new and return unless @user.valid?
+
     session['devise.regist_data'] = { user: @user.attributes }
     session['devise.regist_data'][:user]['password'] = params[:user][:password]
     @company = @user.build_company
@@ -22,11 +21,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create_companies
     @user = User.new(session['devise.regist_data']['user'])
     @company = Company.new(company_params)
-      unless @company.valid?
-        render :new_companies and return
-      end
-    session['devise.regist_data'] = { user: @user.attributes , company: @company.attributes }
-    session['devise.regist_data'][:company]  = params[:company]
+    render :new_companies and return unless @company.valid?
+
+    session['devise.regist_data'] = { user: @user.attributes, company: @company.attributes }
+    session['devise.regist_data'][:company] = params[:company]
     @company_detail = @user.build_company_detail
     render :new_companies_details
   end
@@ -34,11 +32,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create_companies_details
     @user = User.new(session['devise.regist_data']['user']['company'])
     @company_detail = CompanyDetail.new(company_detail_params)
-      unless @company_detail.valid?
-        render :new_companies_details and return
-      end
-    session['devise.regist_data'] = { user: @user.attributes , company: @company.attributes, company_detail: @company_detail.attributes }
-    session['devise.regist_data'][:company_detail]  = params[:company_detail]
+    render :new_companies_details and return unless @company_detail.valid?
+
+    session['devise.regist_data'] = { user: @user.attributes, company: @company.attributes, company_detail: @company_detail.attributes }
+    session['devise.regist_data'][:company_detail] = params[:company_detail]
     @company_type = @user.build_company_type
     render :new_companies_types
   end

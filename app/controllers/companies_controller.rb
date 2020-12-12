@@ -3,8 +3,6 @@ class CompaniesController < ApplicationController
     @company = Company.new
   end
 
-
-
   def edit
   end
 
