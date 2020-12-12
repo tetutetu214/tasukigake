@@ -20,6 +20,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
   render :new_companies
 end
 
+def create_company
+  @user = User.new(session["devise.regist_data"]["user"])
+  @company = Company.new(company_params)
+   unless @company.valid?
+     render :new_companies and return
+   end
+  @user.build_company(@company.attributes)
+  @user.save
+  session["devise.regist_data"]["user"].clear
+  sign_in(:user, @user)
+end
+
+private
+
+def address_params
+  params.require(:address).permit(:postal_code, :address)
+end
   # GET /resource/sign_up
   # def new
   #   super
