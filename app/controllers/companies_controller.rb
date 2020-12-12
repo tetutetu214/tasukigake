@@ -3,15 +3,7 @@ class CompaniesController < ApplicationController
     @company = Company.new
   end
 
-  def create
-    @company = Company.new(company_params)
-    if @company.valid?
-      @company.save
-      redirect_to companies_details_path
-    else
-      render :index
-    end
-  end
+
 
   def edit
   end

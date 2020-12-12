@@ -14,29 +14,26 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     session['devise.regist_data'] = { user: @user.attributes }
     session['devise.regist_data'][:user]['password'] = params[:user][:password]
-    @companies = @user.build_company
+    @company = @user.build_company
     render :new_companies
   end
 
   def create_company
     @user = User.new(session['devise.regist_data']['user'])
     @company = Company.new(company_params)
-    render :new_companies and return unless @company.valid?
-
-    session['devise.regist_data'] = { company: @company.attributes }
-    session['devise.regist_data'][:user][:company] = params[:user][:company]
-    @companies_detail = @company.build_company_detail
+      unless @company.valid?
+        render :new_companies and return 
+      end
+    session['devise.regist_data'] = { user: @user.attributes ,company: @company.attributes }
+    session['devise.regist_data'][:user]['password'] [:company] = params[:user][:password][:company]
+    @companies_detail = @user.build_company_detail
     render :new_company_details
-    # @user.build_company(@company.attributes)
-    # @user.save
-    # session["devise.regist_data"]["user"].clear
-    # sign_in(:user, @user)
   end
 
   private
 
-  def address_params
-    params.require(:address).permit(:postal_code, :address)
+  def company_params
+    params.require(:company).permit(:company_name, :postal_code, :prefecture_id, :company_city, :company_address).merge(user_id: current_user.id)
   end
   # GET /resource/sign_up
   # def new
