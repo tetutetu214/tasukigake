@@ -33,8 +33,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(session['devise.regist_data']['user']['company'])
     @company_detail = CompanyDetail.new(company_detail_params)
     render :new_companies_details and return unless @company_detail.valid?
-
-    session['devise.regist_data'] = { user: @user.attributes, company: @company.attributes, company_detail: @company_detail.attributes }
+    session['devise.regist_data'] = { user: @user.attributes, company_detail: @company_detail.attributes }
     session['devise.regist_data'][:company_detail] = params[:company_detail]
     @company_type = @user.build_company_type
     render :new_companies_types
