@@ -26,10 +26,14 @@ def create_company
    unless @company.valid?
      render :new_companies and return
    end
-  @user.build_company(@company.attributes)
-  @user.save
-  session["devise.regist_data"]["user"].clear
-  sign_in(:user, @user)
+   session["devise.regist_data"] = {company: @company.attributes}
+   session["devise.regist_data"][:user][:company] = params[:user][:company]
+   @companies_detail = @company.build_company_detail
+   render :new_company_details
+  # @user.build_company(@company.attributes)
+  # @user.save
+  # session["devise.regist_data"]["user"].clear
+  # sign_in(:user, @user)
 end
 
 private
