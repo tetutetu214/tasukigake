@@ -16,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
    end
   session["devise.regist_data"] = {user: @user.attributes}
   session["devise.regist_data"][:user]["password"] = params[:user][:password]
-  @companies = @user.build_companies
+  @companies = @user.build_company
   render :new_companies
 end
 

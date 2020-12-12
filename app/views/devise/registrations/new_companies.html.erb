@@ -49,15 +49,13 @@
         </div>
 
         <div class="form-group">
-            <label class="form-text">市区町村</label>
-          <%= f.text_field :city, class:"form-control", placeholder:"例）さいたま市さいたま" %>
+          <%= f.label :company_city, "市町村",class: "form-text" %>
+          <%= f.text_field :company_city, class:"form-control", placeholder:"例）さいたま市さいたま" %>
         </div>
 
         <div class="form-group">
-          <div class='form-text-wrap'>
-            <label class="form-text">番地</label>
-          </div>
-          <%= f.text_field :address, class:"form-control", placeholder:"例）STIKビル1階"%>
+          <%= f.label :company_address, "市町村",class: "form-text" %>
+          <%= f.text_field :company_address, class:"form-control", placeholder:"例）STIKビル1階"%>
         </div>
 
         <div class="text-center mb-5">
