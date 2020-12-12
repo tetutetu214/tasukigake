@@ -4,43 +4,40 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  def new
+    @user = User.new
+  end
 
- def new
-  @user = User.new
- end
+  def create
+    @user = User.new(sign_up_params)
+    render :new and return unless @user.valid?
 
- def create
-  @user = User.new(sign_up_params)
-   unless @user.valid?
-     render :new and return
-   end
-  session["devise.regist_data"] = {user: @user.attributes}
-  session["devise.regist_data"][:user]["password"] = params[:user][:password]
-  @companies = @user.build_company
-  render :new_companies
-end
+    session['devise.regist_data'] = { user: @user.attributes }
+    session['devise.regist_data'][:user]['password'] = params[:user][:password]
+    @companies = @user.build_company
+    render :new_companies
+  end
 
-def create_company
-  @user = User.new(session["devise.regist_data"]["user"])
-  @company = Company.new(company_params)
-   unless @company.valid?
-     render :new_companies and return
-   end
-   session["devise.regist_data"] = {company: @company.attributes}
-   session["devise.regist_data"][:user][:company] = params[:user][:company]
-   @companies_detail = @company.build_company_detail
-   render :new_company_details
-  # @user.build_company(@company.attributes)
-  # @user.save
-  # session["devise.regist_data"]["user"].clear
-  # sign_in(:user, @user)
-end
+  def create_company
+    @user = User.new(session['devise.regist_data']['user'])
+    @company = Company.new(company_params)
+    render :new_companies and return unless @company.valid?
 
-private
+    session['devise.regist_data'] = { company: @company.attributes }
+    session['devise.regist_data'][:user][:company] = params[:user][:company]
+    @companies_detail = @company.build_company_detail
+    render :new_company_details
+    # @user.build_company(@company.attributes)
+    # @user.save
+    # session["devise.regist_data"]["user"].clear
+    # sign_in(:user, @user)
+  end
 
-def address_params
-  params.require(:address).permit(:postal_code, :address)
-end
+  private
+
+  def address_params
+    params.require(:address).permit(:postal_code, :address)
+  end
   # GET /resource/sign_up
   # def new
   #   super
