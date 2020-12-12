@@ -49,7 +49,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.require(:company).permit(:company_name, :postal_code, :prefecture_id, :company_city, :company_address)
   end
 
-
+  def company_detail_params
+    params.require(:company_detail).permit(:division, :representative, :phone_number, :url, :capital, :establishment, :employee, :description, :image)
+  end
   # GET /resource/sign_up
   # def new
   #   super
