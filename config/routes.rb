@@ -5,14 +5,15 @@ Rails.application.routes.draw do
     }
     devise_scope :user do
       get 'companies', to: 'users/registrations#new_companies'
+      post 'companies', to: 'users/registrations#create_companies'
        get 'companies_details', to: 'users/regitsrations#new_companies_details'
-         post 'companies', to: 'users/registrations#create_companies'
+       post 'companies_details', to: 'users/regitsrations#create_companies_details'
     end
       resources :orders, only: [:index,:new,:create,:edit,:update]
         resources :supports, only: [:index, :new, :create,:edit,:update,:show]
           resources :companies, only: [:index,:edit,:update]
             resources :companies_details, only: [:index,:edit,:update]
-              resources :companies_types, only: [:index,:create,:edit,:update]
+              resources :companies_types, only: [:index,:edit,:update]
                 resources :companies_correspondences, only: [:index,:create,:edit,:update]
                   resources :companies_statuses, only: [:index,:create,:edit,:update]
                     resources :project_cases, only: [:index,:new,:create,:edit,:update,:show]

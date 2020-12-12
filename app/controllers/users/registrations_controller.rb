@@ -10,8 +10,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.new(sign_up_params)
-    render :new and return unless @user.valid?
-
+      unless @user.valid?
+        render :new and return
+      end
     session['devise.regist_data'] = { user: @user.attributes }
     session['devise.regist_data'][:user]['password'] = params[:user][:password]
     @company = @user.build_company
@@ -22,19 +23,33 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(session['devise.regist_data']['user'])
     @company = Company.new(company_params)
       unless @company.valid?
-        render :new_companies and return 
+        render :new_companies and return
       end
-    session['devise.regist_data'] = { user: @user.attributes ,company: @company.attributes }
-    session['devise.regist_data'][:user]['password'] [:company] = params[:user][:password][:company]
+    session['devise.regist_data'] = { user: @user.attributes , company: @company.attributes }
+    session['devise.regist_data'][:company]  = params[:company]
     @company_detail = @user.build_company_detail
-    render :new_company_details
+    render :new_companies_details
+  end
+
+  def create_companies_details
+    @user = User.new(session['devise.regist_data']['user']['company'])
+    @company_detail = CompanyDetail.new(company_detail_params)
+      unless @company_detail.valid?
+        render :new_companies_details and return
+      end
+    session['devise.regist_data'] = { user: @user.attributes , company: @company.attributes, company_detail: @company_detail.attributes }
+    session['devise.regist_data'][:company_detail]  = params[:company_detail]
+    @company_type = @user.build_company_type
+    render :new_companies_types
   end
 
   private
 
   def company_params
-    params.require(:company).permit(:company_name, :postal_code, :prefecture_id, :company_city, :company_address).merge(user_id: current_user.id)
+    params.require(:company).permit(:company_name, :postal_code, :prefecture_id, :company_city, :company_address)
   end
+
+
   # GET /resource/sign_up
   # def new
   #   super
