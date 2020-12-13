@@ -31,7 +31,7 @@
     </div>
    <!-- form_with -->
       <div class="row-main col-8">
-          <%= form_with(model: @company_type,url: companies_types_path(@company_type),method: :post,local: true) do |f| %>
+          <%= form_for @company_type, url: companies_types_path(@company_type)  do |f| %>
           <%= render 'shared/error_messages', model:  @company_type %>
 
     <div class="row mt-3">

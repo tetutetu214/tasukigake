@@ -76,6 +76,33 @@ class Users::RegistrationsController < Devise::RegistrationsController
     render :new_companies_statuses
   end
 
+  def create_companies_statuses
+    @user = User.new(session['devise.regist_data']['user'])
+    @company = Company.new(session['company'])
+    @company_detail = CompanyDetail.new(session['company_detail'])
+    @company_type = CompanyType.new(session['company_type_params'])
+    @company_correspondence = CompanyCorrespondence.new(session['company_correspondence_params'])
+    @company_status = CompanyStatus.new(company_status_params)
+
+    render :new_companies_statuses and return unless @company_status.valid?
+    
+    @user.build_company(@company.attributes)
+    @user.build_company_detail(@company_detail.attributes)
+    @user.build_company_type(@company_type.attributes)
+    @user.build_company_correspondence(@company_correspondence.attributes)
+    @user.build_company_status(@company_status.attributes)
+    @user.save
+
+    session['devise.regist_data']['user'].clear
+    session['company'].clear
+    session['company_detail'].clear
+    session['company_type'].clear
+    session['company_correspondence'].clear
+
+    sign_in(:user, @user)
+    redirect_to root_path  
+  end
+
   private
 
   def company_params
@@ -92,6 +119,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def company_correspondence_params
     params.require(:company_correspondence).permit(prefecture_type: [])
+  end
+
+  def company_status_params
+    params.require(:company_status).permit(:status, :insurance, :companies_pr, license: [], tool: [])
   end
   # GET /resource/sign_up
   # def new
