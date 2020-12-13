@@ -1,0 +1,170 @@
+<div class="container-fluid">
+  <%= render "shared/header" %>
+
+<!-- インフォメーション記述情報-->
+  <div class="companies-title mt-3">
+    <div calss="row-top">
+      <h1>会社PRを入力する</h1>
+      <p>本項目を埋めると「協力会社を探す」の一覧にあなたの情報が掲載されます。<br>発注会社から仕事を受けやすくするためにも、情報編集を行ってください。</p>
+    </div>
+<!-- info tab-->
+
+   <%= render "shared/navbar" %>
+
+<!-- info form area-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+    </nav>
+<!-- インフォメーション navbar 記述情報-->
+        <div class="row-border">
+          <form>
+            <div class="form-group mt-3 ">
+              <label for="formControlRange">
+                <h3>プロフィール完了度</h3>
+              </label>
+              <input type="range" class="form-control-range" id="formControlRange">
+            </div>
+          </form>
+        </div>
+<!-- インフォメーション 記述情報-->
+     <div class="row-main">
+        <%= form_for @company_status, url: companies_statuses_path(@company_status)  do |f| %>
+        <%= render 'shared/error_messages', model:  f.object %>
+<%# 請負ステータス %>
+          <div class="division mt-3">
+            <%= f.label :status, '請負ステータス', {class: 'form-label'} %>
+          </div>
+
+          <div class="btn-group col-6">
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :status, 0, {} %> 請負募集中
+            </label>
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :status, 1, {} %> 調整可能
+            </label>
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :status, 2, {} %> 多忙
+            </label>
+          </div>
+<%# 保険区分 %>
+          <div class="division mt-3" data-toggle="buttons">
+            <%= f.label :insurance, '保険区分', {class: 'form-check-label'} %>
+          </div>
+         <div class="btn-group col-6">
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :insurance, 0, {checked: true} %> 健康
+            </label>
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :insurance, 1, {} %> 年金
+            </label>
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :insurance, 2, {} %> 雇用
+            </label>
+          </div>
+
+<!-- licence -->
+    <div class="weight-bold-text mt-5">
+      技術資格
+    </div>
+<!-- List group -->
+    <div class="row">
+      <div class="col-4">
+        <div class="list-group" id="list-tab" role="tablist">
+          <a class="list-group-item list-group-item-action active" id="list-kanri-list" data-toggle="list" href="#list-kanri" role="tab" aria-controls="list-kanri">監理士技術系</a>
+          <a class="list-group-item list-group-item-action " id="list-gisi-list" data-toggle="list" href="#list-gisi" role="tab" aria-controls="list-gisi">技師系技術系</a>
+          <a class="list-group-item list-group-item-action " id="list-kokka-list" data-toggle="list" href="#list-kokka" role="tab" aria-controls="list-kokka">国家免許資格系</a>
+          <a class="list-group-item list-group-item-action " id="list-etc-list" data-toggle="list" href="#list-etc" role="tab" aria-controls="list-etc">その他</a>
+        </div>
+      </div>
+ <!-- Tab panes -->
+          <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+              <!--監理士技術系-->
+                    <div class="tab-pane fade show active" id="list-kanri" role="tabpanel" aria-labelledby="list-kanri-list">
+                      <% license = ["足場工事","舗装工事","しゆんせつ工事","石工事","造園工事","土木工事"] %>
+                        <% license.each do |q| %><br>
+                        <%= f.check_box :license , {multiple: true},q,nil %>
+                        <%= f.label :license, q %>
+                      <% end %>
+                    </div>
+              <!--技師系技術系-->
+                    <div class="tab-pane fade show " id="list-gisi" role="tabpanel" aria-labelledby="list-gisi-list">
+                      <% license = ["足場工事","舗装工事","しゆんせつ工事","石工事","造園工事","土木工事"] %>
+                        <% license.each do |q| %><br>
+                        <%= f.check_box :license , {multiple: true},q,nil %>
+                        <%= f.label :license, q %>
+                      <% end %>
+                    </div>
+              <!--国家免許資格系-->
+                    <div class="tab-pane fade show " id="list-kokka" role="tabpanel" aria-labelledby="list-kokka-list">
+                      <% license = ["足場工事","舗装工事","しゆんせつ工事","石工事","造園工事","土木工事"] %>
+                        <% license.each do |q| %><br>
+                        <%= f.check_box :license , {multiple: true},q,nil %>
+                        <%= f.label :license, q %>
+                      <% end %>
+                    </div>
+              <!--その他-->
+                    <div class="tab-pane fade show " id="list-etc" role="tabpanel" aria-labelledby="list-etc-list">
+                      <% license = ["足場工事","舗装工事","しゆんせつ工事","石工事","造園工事","土木工事"] %>
+                        <% license.each do |q| %><br>
+                        <%= f.check_box :license , {multiple: true},q,nil %>
+                        <%= f.label :license, q %>
+                      <% end %>
+                    </div>
+             </div>
+           </div>
+    </div>
+
+<!-- holder -->
+    <div class="weight-bold-text mt-5">
+      保有建機
+    </div>
+<!-- List group -->
+    <div class="row">
+      <div class="col-4">
+        <div class="list-group" id="list-tab" role="tablist">
+          <a class="list-group-item list-group-item-action active" id="list-buru-list" data-toggle="list" href="#list-buru" role="tab" aria-controls="list-buru">ブルドーザー・スクレイパー</a>
+          <a class="list-group-item list-group-item-action " id="list-hossaku-list" data-toggle="list" href="#list-hossaku" role="tab" aria-controls="list-hossaku">掘削機・積み込み機</a>
+        </div>
+      </div>
+ <!-- Tab panes -->
+          <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+          <!--監理士技術系-->
+                <div class="tab-pane fade show active" id="list-buru" role="tabpanel" aria-labelledby="list-buru-list">
+                  <% tool = ["ブルドーザー"] %>
+                    <% tool.each do |q| %><br>
+                    <%= f.check_box :tool , {multiple: true},q,nil %>
+                    <%= f.label :tool, q %>
+                  <% end %>
+                </div>
+          <!--技師系技術系-->
+                <div class="tab-pane fade show " id="list-hossaku" role="tabpanel" aria-labelledby="list-hossaku-list">
+                  <% tool = ["掘削機器"] %>
+                    <% tool.each do |q| %><br>
+                    <%= f.check_box :tool , {multiple: true},q,nil %>
+                    <%= f.label :tool, q %>
+                  <% end %>
+                </div>
+            </div>
+          </div>
+       </div>
+<%# 会社紹介 %>
+          <div class="companies_pr  mt-3">
+            <%= f.label :companies_pr , '会社PR', {class: 'form-label'} %>
+          </div>
+          <div class="form-group">
+            <%= f.text_area :companies_pr , class: "companies_pr-form col-6", maxlength: "400"  %>
+         </div>
+         <small class="text-muted"> 最大400文字</small>
+
+
+         <div class="text-center mb-5 col-6">
+          <%= f.submit "記録する" ,class:"btn btn-block send-button tx-tfm" %>
+         </div>
+      <% end %>
+    </div>  
+  </div>
+<!-- フッター -->
+    <%= render "shared/footer" %>
+</div>

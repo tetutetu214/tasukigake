@@ -7,9 +7,10 @@
       <h1>社名・住所を入力する</h1>
       <p>本項目を埋めると「協力会社を探す」の一覧にあなたの情ï報が掲載されます。<br>発注会社から仕事を受けやすくするためにも、情報編集を行ってください。</p>
     </div>
+  </div>
 <!-- info tab-->
 
-<%= render "shared/navbar" %>
+    <%= render "shared/navbar" %>
 
 <!-- info form area-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -28,7 +29,7 @@
         </div>
 <!-- インフォメーション 記述情報--> 
      <div class="row-main">
-        <%= form_with(model: @company,local: true) do |f| %>
+        <%= form_for @company, url: companies_path(@company)  do |f| %>
         <%= render 'shared/error_messages', model:  f.object %>
 
         <div class="form-group mt-5">
@@ -49,17 +50,15 @@
         </div>
 
         <div class="form-group">
-            <label class="form-text">市区町村</label>
-          <%= f.text_field :city, class:"form-control", placeholder:"例）さいたま市さいたま" %>
+          <%= f.label :company_city, "市町村",class: "form-text" %>
+          <%= f.text_field :company_city, class:"form-control", placeholder:"例）さいたま市さいたま" %>
         </div>
 
         <div class="form-group">
-          <div class='form-text-wrap'>
-            <label class="form-text">番地</label>
-          </div>
-          <%= f.text_field :address, class:"form-control", placeholder:"例）STIKビル1階"%>
+          <%= f.label :company_address, "市町村",class: "form-text" %>
+          <%= f.text_field :company_address, class:"form-control", placeholder:"例）STIKビル1階"%>
         </div>
-
+<%# 次のページ %>
         <div class="text-center mb-5">
           <%= f.submit "記録する" ,class:"btn btn-block send-button tx-tfm" %>
         </div>

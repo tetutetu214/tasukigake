@@ -28,7 +28,7 @@
         </div>
 <!-- インフォメーション 記述情報-->
      <div class="row-main">
-        <%= form_with(model: @company_detail,url: "/companies_details" ,local: true) do |f| %>
+        <%= form_for @company_detail, url: companies_details_path(@company_detail)  do |f| %>
         <%= render 'shared/error_messages', model:  f.object %>
 <%# 屋号・会社画像 %>
         <div class="iamge mt-5">
@@ -122,10 +122,12 @@
             <%= f.text_area :description, class: "description-form col-6", maxlength: "400"  %>
          </div>
          <small class="text-muted"> 最大400文字</small>
-         <div class="text-center mb-5 col-6">
-          <%= f.submit "記録する" ,class:"btn btn-block send-button tx-tfm" %>
-         </div>
+<%# 次のページ %>
+        <div class="text-center mb-5 col-6">
+          <%= f.submit "NEXT" ,class:"btn btn-block send-button tx-tfm" %>
+        </div>
       <% end %>
+
 
   <div class="row-middle">
    <%= link_to  companies_path , class: 'btn btn-default' do  %>
