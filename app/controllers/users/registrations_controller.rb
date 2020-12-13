@@ -60,6 +60,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
     render :new_companies_correspondences
   end
 
+  def create_companies_correspondences
+    @user = User.new(session['devise.regist_data']['user'])
+    @company = Company.new(session['company'])
+    @company_detail = CompanyDetail.new(session['company_detail'])
+    @company_type = CompanyType.new(session['company_type_params'])
+    @company_correspondence = CompanyCorrespondence.new(company_correspondence_params)
+    
+    render :new_companies_correspondences and return unless @company_correspondence.valid?
+
+    @user.build_company_correspondence(@company_correspondence.attributes)
+    session['company_correspondence'] = @company_correspondence.attributes
+
+    @company_status = @user.build_company_status
+    render :new_companies_statuses
+  end
+
   private
 
   def company_params
@@ -72,6 +88,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def company_type_params
     params.require(:company_type).permit(industry_type: [])
+  end
+
+  def company_correspondence_params
+    params.require(:company_correspondence).permit(prefecture_type: [])
   end
   # GET /resource/sign_up
   # def new

@@ -1,0 +1,124 @@
+<div class="container-fluid">
+  <%= render "shared/header" %>
+
+<!-- インフォメーション記述情報-->
+  <div class="companies-title mt-3">
+    <div calss="row-top">
+      <h1>対応可能エリアを入力する</h1>
+      <p>本項目を埋めると「協力会社を探す」の一覧にあなたの情報が掲載されます。<br>発注会社から仕事を受けやすくするためにも、情報編集を行ってください。</p>
+    </div>
+<!-- info tab-->
+
+   <%= render "shared/navbar" %>
+
+<!-- info form area-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+    </nav>
+<!-- インフォメーション navbar 記述情報-->
+        <div class="row-border">
+          <form>
+            <div class="form-group mt-3 ">
+              <label for="formControlRange">
+              </label>
+              <input type="range" class="form-control-range" id="formControlRange">
+            </div>
+          </form>
+        </div>
+<!-- List group -->
+  <div class="weight-bold-text mt-5">
+      対応可能エリア
+  </div>
+<!-- インフォメーション 記述情報-->
+  <div class="row-main">
+    <%= form_for @company_correspondence, url: companies_correspondences_path(@company_correspondence)  do |f| %>
+    <%= render 'shared/error_messages', model:  f.object %>
+
+<!-- List group -->
+      <div class="row mt-3">
+        <div class="col-4">
+          <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action active" id="list-hokkaidou_touhokku-list" data-toggle="list" href="#list-hokkaidou_touhokku" role="tab" aria-controls="list-hokkaidou_touhokku">北海道・東北エリア</a>
+            <a class="list-group-item list-group-item-action" id="list-kantou-list" data-toggle="list" href="#list-kantou" role="tab" aria-controls="list-kantou">関東エリア</a>
+            <a class="list-group-item list-group-item-action" id="list-tyuubu-list" data-toggle="list" href="#list-tyuubu" role="tab" aria-controls="list-tyuubu">中部エリア</a>
+            <a class="list-group-item list-group-item-action" id="list-kansai-list" data-toggle="list" href="#list-kansai" role="tab" aria-controls="list-kansai">関西エリア</a>
+            <a class="list-group-item list-group-item-action" id="list-tyuugoku-list" data-toggle="list" href="#list-tyuugoku" role="tab" aria-controls="list-tyuugoku">中国エリア</a>
+            <a class="list-group-item list-group-item-action" id="list-sikoku-list" data-toggle="list" href="#list-sikoku" role="tab" aria-controls="list-sikoku">四国エリア</a>
+            <a class="list-group-item list-group-item-action" id="list-kyuusyuu-list" data-toggle="list" href="#list-kyuusyuu" role="tab" aria-controls="list-kyuusyuu">九州エリア</a>
+            
+          </div>
+        </div>
+<!-- Tab panes -->
+
+          <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+              <!--北海道・東北-->
+                    <div class="tab-pane fade show active" id="list-hokkaidou_touhokku" role="tabpanel" aria-labelledby="list-hokkaidou_touhokku-list">
+                      <% prefecture_type = ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県"] %>
+                        <% prefecture_type.each do |q| %><br>
+                        <%= f.check_box :prefecture_type , {multiple: true},q,nil %>
+                        <%= f.label :prefecture_type, q %>
+                      <% end %>
+                    </div>
+              <!--関東-->
+                  <div class="tab-pane fade" id="list-kantou" role="tabpanel" aria-labelledby="list-kantou-list">
+                    <% prefecture_type = ["茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県"] %>
+                        <% prefecture_type.each do |q| %><br>
+                        <%= f.check_box :prefecture_type , {multiple: true},q,nil %>
+                        <%= f.label :prefecture_type, q %>
+                      <% end %>
+                  </div>
+              <!--中部-->
+                    <div class="tab-pane fade" id="list-tyuubu" role="tabpanel" aria-labelledby="list-tyuubu-list">
+                     <% prefecture_type = ["新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県"] %>
+                        <% prefecture_type.each do |q| %><br>
+                        <%= f.check_box :prefecture_type , {multiple: true},q,nil %>
+                        <%= f.label :prefecture_type, q %>
+                      <% end %>
+                    </div>
+              <!--関西-->
+                    <div class="tab-pane fade" id="list-kansai" role="tabpanel" aria-labelledby="list-kansai-list">
+                      <% prefecture_type = ["三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県"] %>
+                        <% prefecture_type.each do |q| %><br>
+                        <%= f.check_box :prefecture_type , {multiple: true},q,nil %>
+                        <%= f.label :prefecture_type, q %>
+                      <% end %>
+                    </div>
+              <!--中国-->
+                    <div class="tab-pane fade" id="list-tyuugoku" role="tabpanel" aria-labelledby="list-tyuugoku-list">
+                      <% prefecture_type = ["鳥取県","島根県","岡山県","広島県","山口県"] %>
+                        <% prefecture_type.each do |q| %><br>
+                        <%= f.check_box :prefecture_type , {multiple: true},q,nil %>
+                        <%= f.label :prefecture_type, q %>
+                      <% end %>
+                    </div>
+              <!--四国-->
+                    <div class="tab-pane fade" id="list-sikoku" role="tabpanel" aria-labelledby="list-sikoku-list">
+                      <% prefecture_type = ["徳島県","香川県","愛媛県","高知県"] %>
+                        <% prefecture_type.each do |q| %><br>
+                        <%= f.check_box :prefecture_type , {multiple: true},q,nil %>
+                        <%= f.label :prefecture_type, q %>
+                      <% end %>
+                    </div>
+              <!--九州-->
+                    <div class="tab-pane fade" id="list-kyuusyuu" role="tabpanel" aria-labelledby="list-kyuusyuu-list">
+                      <% prefecture_type = ["福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"] %>
+                        <% prefecture_type.each do |q| %><br>
+                        <%= f.check_box :prefecture_type , {multiple: true},q,nil %>
+                        <%= f.label :prefecture_type, q %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+<!-- push -->
+        <div class="text-center mb-5 col-6">
+          <%= f.submit "記録する" ,class:"btn btn-block send-button tx-tfm" %>
+        </div>
+      <% end %>
+    </div>  
+  </div>
+<!-- フッター -->
+    <%= render "shared/footer" %>
+</div>
