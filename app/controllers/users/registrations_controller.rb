@@ -25,7 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     render :new_companies and return unless @company.valid?
 
     @user.build_company(@company.attributes)
-    session['company'] = @company.attributes 
+    session['company'] = @company.attributes
 
     @company_detail = @user.build_company_detail
     render :new_companies_details
@@ -50,12 +50,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @company = Company.new(session['company'])
     @company_detail = CompanyDetail.new(session['company_detail'])
     @company_type = CompanyType.new(company_type_params)
-    
+
     render :new_companies_details and return unless @company_type.valid?
 
     @user.build_company_type(@company_type.attributes)
     session['company_type'] = @company_type.attributes
-    
+
     @company_correspondence = @user.build_company_correspondence
     render :new_companies_correspondences
   end
@@ -66,7 +66,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @company_detail = CompanyDetail.new(session['company_detail'])
     @company_type = CompanyType.new(session['company_type_params'])
     @company_correspondence = CompanyCorrespondence.new(company_correspondence_params)
-    
+
     render :new_companies_correspondences and return unless @company_correspondence.valid?
 
     @user.build_company_correspondence(@company_correspondence.attributes)
@@ -85,7 +85,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @company_status = CompanyStatus.new(company_status_params)
 
     render :new_companies_statuses and return unless @company_status.valid?
-    
+
     @user.build_company(@company.attributes)
     @user.build_company_detail(@company_detail.attributes)
     @user.build_company_type(@company_type.attributes)
@@ -100,7 +100,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session['company_correspondence'].clear
 
     sign_in(:user, @user)
-    redirect_to root_path  
+    redirect_to root_path
   end
 
   private
