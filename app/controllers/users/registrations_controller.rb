@@ -21,10 +21,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create_companies
     @user = User.new(session['devise.regist_data']['user'])
     @company = Company.new(company_params)
+
     render :new_companies and return unless @company.valid?
 
     @user.build_company(@company.attributes)
-    session['company'] = { company: @company.attributes }
+    session['company'] = @company.attributes 
 
     @company_detail = @user.build_company_detail
     render :new_companies_details
@@ -34,22 +35,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(session['devise.regist_data']['user'])
     @company = Company.new(session['company'])
     @company_detail = CompanyDetail.new(company_detail_params)
+
     render :new_companies_details and return unless @company_detail.valid?
 
     @user.build_company_detail(@company_detail.attributes)
-    session['company_detail'] = { company: @company.attributes }
+    session['company_detail'] = @company_detail.attributes
 
     @company_type = @user.build_company_type
     render :new_companies_types
   end
 
   def create_companies_types
-    @user = User.new(session['devise.regist_data']['user']['company']['company_detail'])
+    @user = User.new(session['devise.regist_data']['user'])
+    @company = Company.new(session['company'])
+    @company_detail = CompanyDetail.new(session['company_detail'])
     @company_type = CompanyType.new(company_type_params)
+    
     render :new_companies_details and return unless @company_type.valid?
 
-    session['devise.regist_data'] = { company_type: @company_type.attributes }
-    session['devise.regist_data'][:company_type] = params[:company_type]
+    @user.build_company_type(@company_type.attributes)
+    session['company_type'] = @company_type.attributes
+    
     @company_correspondence = @user.build_company_correspondence
     render :new_companies_correspondences
   end
