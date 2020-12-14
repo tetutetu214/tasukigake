@@ -20,15 +20,11 @@
         <%= link_to "施工事例を探す・登録する",  project_cases_path, class: "nav-link text-dark" %>
       </li>
 
-        <%# <% if @company.nil?%> 
-          <li class="nav-item">
-            <%= link_to "プロフィール作成", companies_path, class: "nav-link text-dark" %>
-          </li>
-        <%# <% else %>
-          <%# <li class="nav-item"> %>
-            <%# <%= link_to "プロフィール編集", edit_company_path(@company), class: "nav-link text-dark" %>
-          <%# </li> %>
-        <%# <% end %> 
+        
+      <li class="nav-item">
+        <%= link_to "プロフィール編集", edit_user_registration_path, class: "nav-link text-dark" %>
+      </li>
+        
 
       <li class="nav-item">
         <%= link_to "ログアウト", destroy_user_session_path, class: "nav-link text-dark" ,method: :delete %>
