@@ -1,6 +1,8 @@
 class CompaniesController < ApplicationController
   def index
     @company = Company.new
+    @company_detail = CompanyDetail.new
+    @user = @company_detail.user_id
   end
 
   def edit

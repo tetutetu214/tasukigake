@@ -5,10 +5,10 @@
     <header>
         <div class="carousel-inner">
           <%= image_tag 'main.jpg', class:"img-fluid rounded" %>
-          <%# <img src="assets/tokyo.jpg" class="d-block w-100  alt="" class="img-fluid"> %>
         </div>
     </header>
-
+<!--ジャンボトロン-->
+<div class="row-prof">
 <!-- インフォメーション バー記述情報-->
 <form>
   <div class="form-group mt-5">
@@ -19,6 +19,68 @@
   </div>
 </form>
 
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">進捗</th>
+      <th scope="col">完了</th>
+      <th scope="col">未完了</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">社名・住所</th>
+      <td>○</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">基本情報</th>
+      <td></td>
+      <td>○</td>
+    </tr>
+    <tr>
+      <th scope="row">会社ロゴ</th>
+      <td></td>
+      <td>○</td>
+    </tr>
+    <tr>
+      <th scope="row">会社概要</th>
+      <td></td>
+      <td>○</td>
+    </tr>
+    <tr>
+      <th scope="row">業種</th>
+      <td></td>
+      <td>○</td>
+    </tr>
+    <tr>
+      <th scope="row">対応可能エリア</th>
+      <td></td>
+      <td>○</td>
+    </tr>
+    <tr>
+      <th scope="row">請負ステータス</th>
+      <td></td>
+      <td>○</td>
+    </tr>
+    <tr>
+      <th scope="row">技術資格保有者</th>
+      <td></td>
+      <td>○</td>
+    </tr>
+    <tr>
+      <th scope="row">保有建機</th>
+      <td></td>
+      <td>○</td>
+    </tr>
+    <tr>
+      <th scope="row">請負PR</th>
+      <td></td>
+      <td>○</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 <!-- カード タイトル -->
     <div class="row-middle-title mt-5">
       <h3>おすすめの協力会社</h3>
@@ -26,14 +88,20 @@
 <!-- カード -->
     <div class="row-middle mt-2 mb-5">
       <div class="card-deck">
+
         <div class="card">
+        
+          <%= image_tag @user.image %>
+        
           <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+        
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
+            <%= companies.name %>
             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
           </div>
         </div>
+
         <div class="card">
           <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
           <div class="card-body">
