@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'tops#index'
+  root 'companies#index'
     devise_for :users, controllers: {
       registrations: 'users/registrations'
     }
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
       resources :orders, only: [:index,:new,:create,:edit,:update]
         resources :supports, only: [:index, :new, :create,:edit,:update,:show]
-          resources :companies, only: [:index,:edit,:update]
+          resources :companies, only: [:edit,:update]
             resources :companies_details, only: [:index,:edit,:update]
               resources :companies_types, only: [:index,:edit,:update]
                 resources :companies_correspondences, only: [:index,:edit,:update]
