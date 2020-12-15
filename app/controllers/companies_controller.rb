@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
   def index
     @company = Company.new
     @company_detail = CompanyDetail.new
@@ -6,7 +8,7 @@ class CompaniesController < ApplicationController
   end
 
   def edit
-    @company = current_user.id
+    @company = Company.find(params[:id])
   end
 
   def update
