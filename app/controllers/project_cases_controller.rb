@@ -10,7 +10,7 @@ class ProjectCasesController < ApplicationController
     @project_case = ProjectCase.new(project_case_params)
     if @project_case.valid?
       @project_case.save
-      redirect_to project_case_path
+      redirect_to project_cases_path
     else
       render :new
     end

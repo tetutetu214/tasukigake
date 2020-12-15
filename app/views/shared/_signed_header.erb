@@ -13,27 +13,27 @@
       <li class="nav-item active">
         <%= link_to "仕事を探す・登録する", orders_path, class: "nav-link text-dark" %>
       </li>
-      //
       <li class="nav-item">
         <%= link_to "協力会社を探す・登録する",  supports_path, class: "nav-link text-dark" %>
       </li>
-      //
       <li class="nav-item">
         <%= link_to "施工事例を探す・登録する",  project_cases_path, class: "nav-link text-dark" %>
       </li>
-      //        
-      <li class="nav-item">
-        <%= link_to "プロフィール編集", edit_company_path(current_user), class: "nav-link text-dark" %>
-      </li>
-      //
+
+        <%# <% if @company.nil?%> 
+          <li class="nav-item">
+            <%= link_to "プロフィール作成", companies_path, class: "nav-link text-dark" %>
+          </li>
+        <%# <% else %>
+          <%# <li class="nav-item"> %>
+            <%# <%= link_to "プロフィール編集", edit_company_path(@company), class: "nav-link text-dark" %>
+          <%# </li> %>
+        <%# <% end %> 
+
       <li class="nav-item">
         <%= link_to "ログアウト", destroy_user_session_path, class: "nav-link text-dark" ,method: :delete %>
       </li>
   <% else %>
-      <li class="nav-item">
-        <%= link_to "ログイン", new_user_session_path, class: "nav-link text-dark" %>
-      </li>
-      //
       <li class="nav-item">
         <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-dark" %>
       </li>

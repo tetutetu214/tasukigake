@@ -10,7 +10,7 @@ class SupportsController < ApplicationController
     @support = Support.new(support_params)
     if @support.valid?
       @support.save
-      redirect_to support_path
+      redirect_to supports_path
     else
       render :new
     end

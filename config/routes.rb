@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'tops#index'
+  root 'companies#index'
     devise_for :users, controllers: {
       registrations: 'users/registrations'
     }
@@ -15,13 +15,13 @@ Rails.application.routes.draw do
           get 'companies_statuses', to: 'users/registrations#new_companies_statuses'
           post 'companies_statuses', to: 'users/registrations#create_companies_statuses'
     end
-      resources :orders, only: [:index,:new,:create,:edit,:update]
-        resources :supports, only: [:index, :new, :create,:edit,:update,:show]
-          resources :companies, only: [:index,:edit,:update]
+      resources :orders
+        resources :supports
+         resources :project_cases
+          resources :companies, only: [:edit,:update]
             resources :companies_details, only: [:index,:edit,:update]
               resources :companies_types, only: [:index,:edit,:update]
-                resources :companies_correspondences, only: [:index,:edit,:update]
-                  resources :companies_statuses, only: [:index,:edit,:update]
-                    resources :project_cases, only: [:index,:new,:edit,:update]
+                resources :companies_correspondences, only: [:index,:edit,:update,]
+                  resources :companies_statuses, only: [:index,:edit,:update,]
 
 end
