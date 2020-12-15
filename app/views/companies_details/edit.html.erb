@@ -1,0 +1,144 @@
+<div class="container-fluid">
+
+   <%= render "shared/header" %>
+
+<!-- インフォメーション記述情報-->
+  <div class="companies-title mt-3">
+    <div calss="row-top">
+      <h1>基本情報を編集する</h1>
+      <p>本項目を埋めると「協力会社を探す」の一覧にあなたの情報が掲載されます。<br>発注会社から仕事を受けやすくするためにも、情報編集を行ってください。</p>
+    </div>
+<!-- info tab-->
+
+   <%= render "shared/navbar" %>
+
+<!-- info form area-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+    </nav>
+<!-- インフォメーション navbar 記述情報-->
+        <div class="row-border">
+          <form>
+            <div class="form-group mt-3 ">
+              <label for="formControlRange">
+                <h3>プロフィール完了度</h3>
+              </label>
+              <input type="range" class="form-control-range" id="formControlRange">
+            </div>
+          </form>
+        </div>
+<!-- インフォメーション 記述情報-->
+     <div class="row-main">
+        <%= form_for @company_detail, url: companies_details_path(@company_detail)  do |f| %>
+        <%= render 'shared/error_messages', model:  f.object %>
+<%# 屋号・会社画像 %>
+        <div class="iamge mt-5">
+          <div class="weight-bold-text">
+            会社のロゴ画像
+          </div>
+          <div class="click-image mt-2 ml-3">
+            <%= f.file_field :image, id:"item-image" %>
+          </div>
+        </div>
+<%# 登録区分 %>
+          <div class="division mt-3">
+            <%= f.label :division, '登録区分', {class: 'form-label'} %>
+          </div>
+          <div class="btn-group col-6" data-toggle="buttons">
+            <label class="btn btn-outline-secondary active" style="width:50%">
+              <%= f.radio_button :division, 0, {checked: true} %> 法人
+            </label>
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :division, 1, {} %> 個人事業主
+            </label>
+          </div>
+<%# 代表者 %>
+        <div class="form-group mt-2">
+            <%= f.label :representative, "代表者名" %><a>必須</a><br />
+            <%= f.text_field :representative,class: "form-control col-6", placeholder: "例)襷太郎 " %>
+          </div>
+
+        <div class="form-group mt-2">
+          <%= f.label :phone_number, "電話番号" %><a>必須</a><br />
+          <%= f.text_field :phone_number,class: "form-control col-6", placeholder: "(例)01234567890",maxlength: "11" %>
+         <small class="text-muted">ハイフン無し半角数字11桁</small>
+        </div>
+
+        <div class="form-group mt-2">
+          <%= f.label :url, "ウェブサイト" %><br />
+          <%= f.text_field :url,class: "form-control col-6", placeholder: "(例)https://○○○○○○○○.co.jp" %>
+        </div>
+<%# 資本金 %>
+        <div class="form-group mt-2">
+          <%= f.label :capital, "資本金" %><br />
+          <%= f.text_field :capital,class: "form-control col-6", placeholder: "(例)1000" %>
+         <small class="text-muted">半角数字のみ記入</small>
+        </div>
+<%# 設立年月日 %>
+        <div class="form-group">
+          <div class='form-text-wrap'>
+            <label class="form-text">設立年月日</label>
+          </div>
+          <div class='input-establishment-wrap form-inline'>
+            <%= raw sprintf(
+                        f.date_select(
+                          :establishment,
+                          class:'select-establishment',
+                          id:"establishment-date",
+                          use_month_numbers: true,
+                          prompt:'--',
+                          start_year: 1930,
+                          end_year: (Time.now.year - 5),
+                          date_separator: '%s'),
+                        "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+          </div>
+        </div>
+<%# 従業員数 %>
+          <div class="employee mt-3">
+            <%= f.label :employee, '従業員数', {class: 'form-label'} %>
+          </div>
+          <div class="btn-group col-6" data-toggle="buttons">
+            <label class="btn btn-outline-secondary active" style="width:50%">
+              <%= f.radio_button :employee, 0, {checked: true} %> 1人
+            </label>
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :employee, 2, {} %> 2〜5人
+            </label>
+             <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :employee, 3, {} %> 6〜10人
+            </label>
+              <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :employee, 4, {} %> 11〜30人
+            </label>
+            </label>
+              <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :employee, 5, {} %> 31人以上
+            </label>
+          </div>
+<%# 会社紹介 %>
+          <div class="description mt-3">
+            <%= f.label :description, '会社概要', {class: 'form-label'} %>
+          </div>
+          <div class="form-group">
+            <%= f.text_area :description, class: "description-form col-6", maxlength: "400"  %>
+         </div>
+         <small class="text-muted"> 最大400文字</small>
+<%# 次のページ %>
+        <div class="text-center mb-5 col-6">
+          <%= f.submit "NEXT" ,class:"btn btn-block send-button tx-tfm" %>
+        </div>
+      <% end %>
+
+
+  <div class="row-middle">
+   <%= link_to  companies_path , class: 'btn btn-default' do  %>
+   <i class="fa fa-arrow-left"></i>
+  <span>戻る</span>
+  <% end %>
+  </div>
+
+    </div>  
+  </div>
+<!-- フッター -->
+    <%= render "shared/footer" %>
+</div>

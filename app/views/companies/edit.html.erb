@@ -4,7 +4,7 @@
 <!-- インフォメーション記述情報-->
   <div class="companies-title mt-3">
     <div calss="row-top">
-      <h1>社名・住所を入力する</h1>
+      <h1>社名・住所を編集する</h1>
       <p>本項目を埋めると「協力会社を探す」の一覧にあなたの情報が掲載されます。<br>発注会社から仕事を受けやすくするためにも、情報編集を行ってください。</p>
     </div>
 <!-- info tab-->
@@ -29,7 +29,7 @@
 <!-- インフォメーション 記述情報 --> 
      <div class="row-main">
         <%= form_with(model: @company,local: true) do |f| %>
-        <%# <%= render 'shared/error_messages', model:  @company %> %>
+        <%# <%= render 'shared/error_messages', model:  @company %>
 
         <div class="form-group mt-5">
           <%= f.label :company_name, "会社名" %><a>必須</a><br />
