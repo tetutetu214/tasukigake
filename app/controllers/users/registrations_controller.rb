@@ -64,7 +64,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(session['devise.regist_data']['user'])
     @company = Company.new(session['company'])
     @company_detail = CompanyDetail.new(session['company_detail'])
-    @company_type = CompanyType.new(session['company_type_params'])
+    @company_type = CompanyType.new(session['company_type'])
     @company_correspondence = CompanyCorrespondence.new(company_correspondence_params)
 
     render :new_companies_correspondences and return unless @company_correspondence.valid?
@@ -80,8 +80,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(session['devise.regist_data']['user'])
     @company = Company.new(session['company'])
     @company_detail = CompanyDetail.new(session['company_detail'])
-    @company_type = CompanyType.new(session['company_type_params'])
-    @company_correspondence = CompanyCorrespondence.new(session['company_correspondence_params'])
+    @company_type = CompanyType.new(session['company_type'])
+    @company_correspondence = CompanyCorrespondence.new(session['company_correspondence'])
     @company_status = CompanyStatus.new(company_status_params)
 
     render :new_companies_statuses and return unless @company_status.valid?

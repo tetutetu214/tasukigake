@@ -1,7 +1,7 @@
 class CreateCompanyDetails < ActiveRecord::Migration[6.0]
   def change
     create_table :company_details do |t|
-      t.integer :division, null: false
+      t.string :division, null: false
       t.integer :representative, null: false
       t.string :phone_number , null: false
       t.string :url

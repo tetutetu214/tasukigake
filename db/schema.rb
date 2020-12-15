@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_060732) do
   end
 
   create_table "company_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "division", null: false
+    t.string "division", null: false
     t.integer "representative", null: false
     t.string "phone_number", null: false
     t.string "url"
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_060732) do
 
   create_table "project_cases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "project_case_name", null: false
-    t.text "prefecture_id", null: false
+    t.integer "prefecture_id", null: false
     t.string "project_case_city"
     t.string "project_case_address"
     t.text "project_case_pr", null: false
