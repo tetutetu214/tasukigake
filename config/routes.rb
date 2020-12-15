@@ -19,9 +19,8 @@ Rails.application.routes.draw do
         resources :supports
          resources :project_cases
           resources :companies, only: [:edit,:update]
-            resources :companies_details, only: [:index,:edit,:update]
-              resources :companies_types, only: [:index,:edit,:update]
-                resources :companies_correspondences, only: [:index,:edit,:update,]
-                  resources :companies_statuses, only: [:index,:edit,:update,]
-
+            resources :companies_details, only: [:edit,:update]
+              resources :companies_types, only: [:edit,:update]
+                resources :companies_correspondences, only: [:edit,:update,]
+                  resources :companies_statuses, only: [:edit,:update,]
 end
