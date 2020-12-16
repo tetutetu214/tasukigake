@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 2020_12_08_060732) do
   end
 
   create_table "company_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "division", null: false
-    t.integer "representative", null: false
+    t.integer "division", null: false
+    t.string "representative", null: false
     t.string "phone_number", null: false
     t.string "url"
     t.decimal "capital", precision: 10, null: false
